@@ -16,6 +16,26 @@ export function createCpvService(entries: CpvEntry[]): CpvService {
   const byCode = new Map<string, CpvEntry>();
   for (const e of entries) byCode.set(e.code, e);
 
+  const childrenOf = new Map<string, string[]>();
+  for (const e of entries) {
+    if (e.parent) {
+      const list = childrenOf.get(e.parent) ?? [];
+      list.push(e.code);
+      childrenOf.set(e.parent, list);
+    }
+  }
+
+  function collectDescendants(code: string, out: CpvEntry[]) {
+    const kids = childrenOf.get(code) ?? [];
+    for (const k of kids) {
+      const e = byCode.get(k);
+      if (e) {
+        out.push(e);
+        collectDescendants(k, out);
+      }
+    }
+  }
+
   return {
     lookup(code) {
       return byCode.get(code);
@@ -40,8 +60,20 @@ export function createCpvService(entries: CpvEntry[]): CpvService {
       scored.sort((a, b) => b.score - a.score);
       return scored.slice(0, limit).map((s) => s.entry);
     },
-    expand() {
-      throw new Error("not implemented");
+    expand(code) {
+      const start = byCode.get(code);
+      if (!start) return { ancestors: [], descendants: [] };
+      const ancestors: CpvEntry[] = [];
+      let cur: CpvEntry | undefined = start;
+      while (cur?.parent) {
+        const p = byCode.get(cur.parent);
+        if (!p) break;
+        ancestors.push(p);
+        cur = p;
+      }
+      const descendants: CpvEntry[] = [];
+      collectDescendants(code, descendants);
+      return { ancestors, descendants };
     },
     all() {
       return entries;

@@ -54,3 +54,26 @@ describe("CpvService.search", () => {
     expect(cpv.search("xyz_does_not_exist")).toEqual([]);
   });
 });
+
+describe("CpvService.expand", () => {
+  const cpv = createCpvService(fixture);
+
+  it("returns ancestors of a leaf code", () => {
+    const { ancestors } = cpv.expand("45110000-1");
+    expect(ancestors.map((a) => a.code)).toEqual(["45100000-8", "45000000-7"]);
+  });
+
+  it("returns descendants of a parent code", () => {
+    const { descendants } = cpv.expand("45000000-7");
+    expect(descendants.map((d) => d.code).sort()).toEqual([
+      "45100000-8",
+      "45110000-1",
+    ]);
+  });
+
+  it("returns empty arrays for unknown code", () => {
+    const { ancestors, descendants } = cpv.expand("99999999-9");
+    expect(ancestors).toEqual([]);
+    expect(descendants).toEqual([]);
+  });
+});
