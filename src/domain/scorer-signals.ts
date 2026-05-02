@@ -122,3 +122,34 @@ export const buyerFamiliaritySignal: Signal = (tender, profile) => {
   }
   return { signal: "buyer_familiarity", contribution: 0, detail: "buyer not preferred" };
 };
+
+export type ExclusionResult = {
+  fired: boolean;
+  reasons: ScoreReason[];
+};
+
+export function exclusionGate(tender: Tender, profile: Profile): ExclusionResult {
+  const reasons: ScoreReason[] = [];
+  const text = `${tender.title}\n${tender.description}`.toLowerCase();
+  for (const kw of profile.exclusions.keywords) {
+    if (kw.length === 0) continue;
+    if (text.includes(kw.toLowerCase())) {
+      reasons.push({
+        signal: "exclusion_keyword",
+        contribution: 0,
+        detail: `excluded keyword "${kw}" present`,
+      });
+    }
+  }
+  const tenderCpvSet = new Set(tender.cpvCodes);
+  for (const code of profile.exclusions.cpvCodes) {
+    if (tenderCpvSet.has(code)) {
+      reasons.push({
+        signal: "exclusion_cpv",
+        contribution: 0,
+        detail: `excluded CPV ${code} present`,
+      });
+    }
+  }
+  return { fired: reasons.length > 0, reasons };
+}

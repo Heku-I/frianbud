@@ -7,6 +7,7 @@ import {
   languageMatchSignal,
   deadlineFeasibilitySignal,
   buyerFamiliaritySignal,
+  exclusionGate,
 } from "../../src/domain/scorer-signals.js";
 
 const baseProfile: Profile = {
@@ -244,5 +245,49 @@ describe("buyerFamiliaritySignal", () => {
       { ...baseProfile, preferredBuyers: ["999999999"] }
     );
     expect(r.contribution).toBe(10);
+  });
+});
+
+describe("exclusionGate", () => {
+  it("returns no fires when no exclusions", () => {
+    const r = exclusionGate(baseTender, baseProfile);
+    expect(r.fired).toBe(false);
+    expect(r.reasons).toEqual([]);
+  });
+
+  it("fires on excluded keyword in title (case-insensitive)", () => {
+    const r = exclusionGate(
+      { ...baseTender, title: "Construction work in Oslo" },
+      { ...baseProfile, exclusions: { keywords: ["construction"], cpvCodes: [] } }
+    );
+    expect(r.fired).toBe(true);
+    expect(r.reasons[0]?.detail).toMatch(/construction/i);
+  });
+
+  it("fires on excluded keyword in description", () => {
+    const r = exclusionGate(
+      { ...baseTender, description: "Heavy machinery required" },
+      { ...baseProfile, exclusions: { keywords: ["machinery"], cpvCodes: [] } }
+    );
+    expect(r.fired).toBe(true);
+  });
+
+  it("fires on excluded CPV code", () => {
+    const r = exclusionGate(
+      { ...baseTender, cpvCodes: ["45000000-7"] },
+      { ...baseProfile, exclusions: { keywords: [], cpvCodes: ["45000000-7"] } }
+    );
+    expect(r.fired).toBe(true);
+  });
+
+  it("returns multiple reasons when multiple exclusions fire", () => {
+    const r = exclusionGate(
+      { ...baseTender, title: "Construction", cpvCodes: ["45000000-7"] },
+      {
+        ...baseProfile,
+        exclusions: { keywords: ["construction"], cpvCodes: ["45000000-7"] },
+      }
+    );
+    expect(r.reasons).toHaveLength(2);
   });
 });
