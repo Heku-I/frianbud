@@ -60,3 +60,18 @@ export const valueInRangeSignal: Signal = (tender, profile) => {
   }
   return { signal: "value_in_range", contribution: 0, detail: "value outside band" };
 };
+
+export const languageMatchSignal: Signal = (tender, profile) => {
+  if (tender.languages.length === 0) {
+    return {
+      signal: "language_match",
+      contribution: 10,
+      detail: "no language declared, assumed deliverable",
+    };
+  }
+  const set = new Set(profile.languages);
+  if (tender.languages.some((l) => set.has(l))) {
+    return { signal: "language_match", contribution: 10, detail: "language deliverable" };
+  }
+  return { signal: "language_match", contribution: 0, detail: "no deliverable language" };
+};

@@ -4,6 +4,7 @@ import {
   cpvOverlapSignal,
   regionMatchSignal,
   valueInRangeSignal,
+  languageMatchSignal,
 } from "../../src/domain/scorer-signals.js";
 
 const baseProfile: Profile = {
@@ -146,5 +147,31 @@ describe("valueInRangeSignal", () => {
       baseProfile
     );
     expect(r.contribution).toBe(0);
+  });
+});
+
+describe("languageMatchSignal", () => {
+  it("scores 10 when at least one language matches", () => {
+    const r = languageMatchSignal(
+      { ...baseTender, languages: ["no"] },
+      { ...baseProfile, languages: ["no", "en"] }
+    );
+    expect(r.contribution).toBe(10);
+  });
+
+  it("scores 0 when no languages overlap", () => {
+    const r = languageMatchSignal(
+      { ...baseTender, languages: ["de"] },
+      { ...baseProfile, languages: ["no", "en"] }
+    );
+    expect(r.contribution).toBe(0);
+  });
+
+  it("scores 10 when tender has no language declared (assumed deliverable)", () => {
+    const r = languageMatchSignal(
+      { ...baseTender, languages: [] },
+      baseProfile
+    );
+    expect(r.contribution).toBe(10);
   });
 });
