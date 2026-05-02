@@ -1,0 +1,135 @@
+{
+  "place-of-performance": [
+    "DEU",
+    "DNK",
+    "FIN",
+    "NOR",
+    "SWE"
+  ],
+  "notice-type": "qu-sy",
+  "publication-number": "264183-2016",
+  "classification-cpv": [
+    "64100000"
+  ],
+  "buyer-name": {
+    "eng": [
+      "Post Danmark A/S"
+    ]
+  },
+  "publication-date": "2016-07-30+02:00",
+  "links": {
+    "xml": {
+      "MUL": "https://ted.europa.eu/en/notice/264183-2016/xml"
+    },
+    "pdf": {
+      "BUL": "https://ted.europa.eu/bg/notice/264183-2016/pdf",
+      "SPA": "https://ted.europa.eu/es/notice/264183-2016/pdf",
+      "CES": "https://ted.europa.eu/cs/notice/264183-2016/pdf",
+      "DAN": "https://ted.europa.eu/da/notice/264183-2016/pdf",
+      "DEU": "https://ted.europa.eu/de/notice/264183-2016/pdf",
+      "EST": "https://ted.europa.eu/et/notice/264183-2016/pdf",
+      "ELL": "https://ted.europa.eu/el/notice/264183-2016/pdf",
+      "ENG": "https://ted.europa.eu/en/notice/264183-2016/pdf",
+      "FRA": "https://ted.europa.eu/fr/notice/264183-2016/pdf",
+      "GLE": "https://ted.europa.eu/ga/notice/264183-2016/pdf",
+      "HRV": "https://ted.europa.eu/hr/notice/264183-2016/pdf",
+      "ITA": "https://ted.europa.eu/it/notice/264183-2016/pdf",
+      "LAV": "https://ted.europa.eu/lv/notice/264183-2016/pdf",
+      "LIT": "https://ted.europa.eu/lt/notice/264183-2016/pdf",
+      "HUN": "https://ted.europa.eu/hu/notice/264183-2016/pdf",
+      "MLT": "https://ted.europa.eu/mt/notice/264183-2016/pdf",
+      "NLD": "https://ted.europa.eu/nl/notice/264183-2016/pdf",
+      "POL": "https://ted.europa.eu/pl/notice/264183-2016/pdf",
+      "POR": "https://ted.europa.eu/pt/notice/264183-2016/pdf",
+      "RON": "https://ted.europa.eu/ro/notice/264183-2016/pdf",
+      "SLK": "https://ted.europa.eu/sk/notice/264183-2016/pdf",
+      "SLV": "https://ted.europa.eu/sl/notice/264183-2016/pdf",
+      "FIN": "https://ted.europa.eu/fi/notice/264183-2016/pdf",
+      "SWE": "https://ted.europa.eu/sv/notice/264183-2016/pdf"
+    },
+    "pdfs": {
+      "ENG": "https://ted.europa.eu/en/notice/264183-2016/pdfs"
+    },
+    "html": {
+      "BUL": "https://ted.europa.eu/bg/notice/-/detail/264183-2016",
+      "SPA": "https://ted.europa.eu/es/notice/-/detail/264183-2016",
+      "CES": "https://ted.europa.eu/cs/notice/-/detail/264183-2016",
+      "DAN": "https://ted.europa.eu/da/notice/-/detail/264183-2016",
+      "DEU": "https://ted.europa.eu/de/notice/-/detail/264183-2016",
+      "EST": "https://ted.europa.eu/et/notice/-/detail/264183-2016",
+      "ELL": "https://ted.europa.eu/el/notice/-/detail/264183-2016",
+      "ENG": "https://ted.europa.eu/en/notice/-/detail/264183-2016",
+      "FRA": "https://ted.europa.eu/fr/notice/-/detail/264183-2016",
+      "GLE": "https://ted.europa.eu/ga/notice/-/detail/264183-2016",
+      "HRV": "https://ted.europa.eu/hr/notice/-/detail/264183-2016",
+      "ITA": "https://ted.europa.eu/it/notice/-/detail/264183-2016",
+      "LAV": "https://ted.europa.eu/lv/notice/-/detail/264183-2016",
+      "LIT": "https://ted.europa.eu/lt/notice/-/detail/264183-2016",
+      "HUN": "https://ted.europa.eu/hu/notice/-/detail/264183-2016",
+      "MLT": "https://ted.europa.eu/mt/notice/-/detail/264183-2016",
+      "NLD": "https://ted.europa.eu/nl/notice/-/detail/264183-2016",
+      "POL": "https://ted.europa.eu/pl/notice/-/detail/264183-2016",
+      "POR": "https://ted.europa.eu/pt/notice/-/detail/264183-2016",
+      "RON": "https://ted.europa.eu/ro/notice/-/detail/264183-2016",
+      "SLK": "https://ted.europa.eu/sk/notice/-/detail/264183-2016",
+      "SLV": "https://ted.europa.eu/sl/notice/-/detail/264183-2016",
+      "FIN": "https://ted.europa.eu/fi/notice/-/detail/264183-2016",
+      "SWE": "https://ted.europa.eu/sv/notice/-/detail/264183-2016"
+    },
+    "htmlDirect": {
+      "BUL": "https://ted.europa.eu/bg/notice/264183-2016/html",
+      "SPA": "https://ted.europa.eu/es/notice/264183-2016/html",
+      "CES": "https://ted.europa.eu/cs/notice/264183-2016/html",
+      "DAN": "https://ted.europa.eu/da/notice/264183-2016/html",
+      "DEU": "https://ted.europa.eu/de/notice/264183-2016/html",
+      "EST": "https://ted.europa.eu/et/notice/264183-2016/html",
+      "ELL": "https://ted.europa.eu/el/notice/264183-2016/html",
+      "ENG": "https://ted.europa.eu/en/notice/264183-2016/html",
+      "FRA": "https://ted.europa.eu/fr/notice/264183-2016/html",
+      "GLE": "https://ted.europa.eu/ga/notice/264183-2016/html",
+      "HRV": "https://ted.europa.eu/hr/notice/264183-2016/html",
+      "ITA": "https://ted.europa.eu/it/notice/264183-2016/html",
+      "LAV": "https://ted.europa.eu/lv/notice/264183-2016/html",
+      "LIT": "https://ted.europa.eu/lt/notice/264183-2016/html",
+      "HUN": "https://ted.europa.eu/hu/notice/264183-2016/html",
+      "MLT": "https://ted.europa.eu/mt/notice/264183-2016/html",
+      "NLD": "https://ted.europa.eu/nl/notice/264183-2016/html",
+      "POL": "https://ted.europa.eu/pl/notice/264183-2016/html",
+      "POR": "https://ted.europa.eu/pt/notice/264183-2016/html",
+      "RON": "https://ted.europa.eu/ro/notice/264183-2016/html",
+      "SLK": "https://ted.europa.eu/sk/notice/264183-2016/html",
+      "SLV": "https://ted.europa.eu/sl/notice/264183-2016/html",
+      "FIN": "https://ted.europa.eu/fi/notice/264183-2016/html",
+      "SWE": "https://ted.europa.eu/sv/notice/264183-2016/html"
+    }
+  },
+  "buyer-country": [
+    "DNK"
+  ],
+  "notice-title": {
+    "swe": "Danmark-Köpenhamn: Post- och budtjänster",
+    "hun": "Dánia-Koppenhága: Postai és futárszolgáltatás",
+    "lav": "Dānija-Kopenhāgena: Pasta un kurjeru pakalpojumi",
+    "gle": "Danmhairg, an-Cóbanhávan: Post and courier services",
+    "ell": "Δανία-Κοπεγχάγη: Υπηρεσίες κρατικών και ιδιωτικών ταχυδρομείων",
+    "spa": "Dinamarca-Copenhague: Servicios postales y de correo rápido",
+    "nld": "Denemarken-Kopenhagen: Post- en koeriersdiensten",
+    "est": "Taani-Kopenhaagen: Posti- ja kullerteenused",
+    "fin": "Tanska-Kööpenhamina: Posti- ja pikalähettipalvelut",
+    "pol": "Dania-Kopenhaga: Usługi pocztowe i kurierskie",
+    "hrv": "Danska-Kopenhagen: Poštanske i kurirske usluge",
+    "ron": "Danemarca-Copenhaga: Servicii poştale şi de curierat",
+    "dan": "Danmark-København: Postbefordring og kurértjeneste",
+    "ces": "Dánsko-Kodaň: Poštovní a kurýrní služby",
+    "por": "Dinamarca-Copenhaga: Serviços postais e de correio rápido",
+    "slk": "Dánsko-Kodaň: Poštové a doručovateľské služby",
+    "fra": "Danemark-Copenhague: Services postaux et services de courrier",
+    "mlt": "id-Danimarka-Kopenħagen: Servizzi postali u tal-kurrier",
+    "deu": "Dänemark-Kopenhagen: Post- und Kurierdienste",
+    "lit": "Danija-Kopenhaga: Pašto ir kurjerių paslaugos",
+    "ita": "Danimarca-Copenaghen: Servizi di poste e corriere",
+    "bul": "Дaния-Копенхаген: Услуги на националната поща, куриерски услуги",
+    "slv": "Danska-Kopenhagen: Poštne in kurirske storitve",
+    "eng": "Denmark-Copenhagen: Post and courier services"
+  }
+}
