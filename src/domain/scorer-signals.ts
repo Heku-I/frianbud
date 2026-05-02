@@ -96,3 +96,29 @@ export const deadlineFeasibilitySignal: Signal = (tender, profile, opts) => {
     detail: `only ${Math.floor(daysOut)} days, need ${profile.minLeadTimeDays}`,
   };
 };
+
+export const buyerFamiliaritySignal: Signal = (tender, profile) => {
+  if (profile.preferredBuyers.length === 0) {
+    return {
+      signal: "buyer_familiarity_inactive",
+      contribution: 0,
+      detail: "no preferred buyers configured",
+    };
+  }
+  const candidates = new Set(profile.preferredBuyers);
+  if (candidates.has(tender.buyer.name)) {
+    return {
+      signal: "buyer_familiarity",
+      contribution: 10,
+      detail: `${tender.buyer.name} in preferred list`,
+    };
+  }
+  if (tender.buyer.orgNumber && candidates.has(tender.buyer.orgNumber)) {
+    return {
+      signal: "buyer_familiarity",
+      contribution: 10,
+      detail: `${tender.buyer.orgNumber} in preferred list`,
+    };
+  }
+  return { signal: "buyer_familiarity", contribution: 0, detail: "buyer not preferred" };
+};

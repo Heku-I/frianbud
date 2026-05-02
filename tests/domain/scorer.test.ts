@@ -6,6 +6,7 @@ import {
   valueInRangeSignal,
   languageMatchSignal,
   deadlineFeasibilitySignal,
+  buyerFamiliaritySignal,
 } from "../../src/domain/scorer-signals.js";
 
 const baseProfile: Profile = {
@@ -211,6 +212,37 @@ describe("deadlineFeasibilitySignal", () => {
     const t = { ...baseTender };
     delete (t as { deadlineAt?: unknown }).deadlineAt;
     const r = deadlineFeasibilitySignal(t as Tender, baseProfile, { now });
+    expect(r.contribution).toBe(10);
+  });
+});
+
+describe("buyerFamiliaritySignal", () => {
+  it("scores 10 when buyer is in preferredBuyers", () => {
+    const r = buyerFamiliaritySignal(
+      { ...baseTender, buyer: { ...baseTender.buyer, name: "Oslo Kommune" } },
+      { ...baseProfile, preferredBuyers: ["Oslo Kommune"] }
+    );
+    expect(r.contribution).toBe(10);
+  });
+
+  it("scores 0 when buyer not in list", () => {
+    const r = buyerFamiliaritySignal(
+      baseTender,
+      { ...baseProfile, preferredBuyers: ["Bergen Kommune"] }
+    );
+    expect(r.contribution).toBe(0);
+  });
+
+  it("returns inactive marker when preferredBuyers is empty", () => {
+    const r = buyerFamiliaritySignal(baseTender, { ...baseProfile, preferredBuyers: [] });
+    expect(r.signal).toBe("buyer_familiarity_inactive");
+  });
+
+  it("matches by orgNumber when present", () => {
+    const r = buyerFamiliaritySignal(
+      { ...baseTender, buyer: { name: "X", country: "NO", orgNumber: "999999999" } },
+      { ...baseProfile, preferredBuyers: ["999999999"] }
+    );
     expect(r.contribution).toBe(10);
   });
 });
