@@ -4,6 +4,7 @@ import { getProfileTool } from "./get-profile.js";
 import { searchTendersTool } from "./search-tenders.js";
 import { getTenderTool } from "./get-tender.js";
 import { listUpcomingDeadlinesTool } from "./list-upcoming-deadlines.js";
+import { listRecentAwardsTool } from "./list-recent-awards.js";
 
 export const tools: AnyToolDefinition[] = [
   setupProfileTool as AnyToolDefinition,
@@ -11,4 +12,5 @@ export const tools: AnyToolDefinition[] = [
   searchTendersTool as AnyToolDefinition,
   getTenderTool as AnyToolDefinition,
   listUpcomingDeadlinesTool as AnyToolDefinition,
+  listRecentAwardsTool as AnyToolDefinition,
 ];
