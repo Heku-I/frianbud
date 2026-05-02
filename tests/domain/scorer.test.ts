@@ -5,6 +5,7 @@ import {
   regionMatchSignal,
   valueInRangeSignal,
   languageMatchSignal,
+  deadlineFeasibilitySignal,
 } from "../../src/domain/scorer-signals.js";
 
 const baseProfile: Profile = {
@@ -172,6 +173,44 @@ describe("languageMatchSignal", () => {
       { ...baseTender, languages: [] },
       baseProfile
     );
+    expect(r.contribution).toBe(10);
+  });
+});
+
+describe("deadlineFeasibilitySignal", () => {
+  const now = new Date("2026-05-01T00:00:00Z");
+
+  it("scores 10 when deadline is far enough out", () => {
+    const r = deadlineFeasibilitySignal(
+      { ...baseTender, deadlineAt: "2026-05-30T00:00:00Z" },
+      { ...baseProfile, minLeadTimeDays: 7 },
+      { now }
+    );
+    expect(r.contribution).toBe(10);
+  });
+
+  it("scores 0 when deadline is too soon", () => {
+    const r = deadlineFeasibilitySignal(
+      { ...baseTender, deadlineAt: "2026-05-03T00:00:00Z" },
+      { ...baseProfile, minLeadTimeDays: 7 },
+      { now }
+    );
+    expect(r.contribution).toBe(0);
+  });
+
+  it("scores 0 when deadline already passed", () => {
+    const r = deadlineFeasibilitySignal(
+      { ...baseTender, deadlineAt: "2026-04-01T00:00:00Z" },
+      baseProfile,
+      { now }
+    );
+    expect(r.contribution).toBe(0);
+  });
+
+  it("scores 10 when no deadline (e.g. award notice)", () => {
+    const t = { ...baseTender };
+    delete (t as { deadlineAt?: unknown }).deadlineAt;
+    const r = deadlineFeasibilitySignal(t as Tender, baseProfile, { now });
     expect(r.contribution).toBe(10);
   });
 });

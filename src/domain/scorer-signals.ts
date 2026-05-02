@@ -75,3 +75,24 @@ export const languageMatchSignal: Signal = (tender, profile) => {
   }
   return { signal: "language_match", contribution: 0, detail: "no deliverable language" };
 };
+
+export const deadlineFeasibilitySignal: Signal = (tender, profile, opts) => {
+  if (!tender.deadlineAt) {
+    return { signal: "deadline_feasibility", contribution: 10, detail: "no deadline" };
+  }
+  const now = opts?.now ?? new Date();
+  const deadline = new Date(tender.deadlineAt);
+  const daysOut = (deadline.getTime() - now.getTime()) / (24 * 60 * 60 * 1000);
+  if (daysOut >= profile.minLeadTimeDays) {
+    return {
+      signal: "deadline_feasibility",
+      contribution: 10,
+      detail: `${Math.floor(daysOut)} days lead time`,
+    };
+  }
+  return {
+    signal: "deadline_feasibility",
+    contribution: 0,
+    detail: `only ${Math.floor(daysOut)} days, need ${profile.minLeadTimeDays}`,
+  };
+};
