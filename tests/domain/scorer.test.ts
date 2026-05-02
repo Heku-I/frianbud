@@ -9,6 +9,7 @@ import {
   buyerFamiliaritySignal,
   exclusionGate,
 } from "../../src/domain/scorer-signals.js";
+import { scoreTender } from "../../src/domain/scorer.js";
 
 const baseProfile: Profile = {
   schemaVersion: 1,
@@ -289,5 +290,71 @@ describe("exclusionGate", () => {
       }
     );
     expect(r.reasons).toHaveLength(2);
+  });
+});
+
+describe("scoreTender (composition)", () => {
+  const now = new Date("2026-05-01T00:00:00Z");
+
+  it("scores a perfect match around 100", () => {
+    const r = scoreTender(baseTender, baseProfile, { now });
+    // CPV(35) + region(20) + value(15) + lang(10) + deadline(10) +
+    // buyer-familiarity-redistributes-10-pro-rata = 100
+    expect(r.score).toBe(100);
+  });
+
+  it("caps at 25 when an exclusion fires", () => {
+    const r = scoreTender(
+      baseTender,
+      { ...baseProfile, exclusions: { keywords: ["cleaning"], cpvCodes: [] } },
+      { now }
+    );
+    expect(r.score).toBeLessThanOrEqual(25);
+    expect(r.reasons.some((x) => x.signal === "exclusion_keyword")).toBe(true);
+  });
+
+  it("includes a reason for each fired signal", () => {
+    const r = scoreTender(baseTender, baseProfile, { now });
+    const signals = r.reasons.map((x) => x.signal);
+    expect(signals).toEqual(
+      expect.arrayContaining([
+        "cpv_overlap",
+        "region_match",
+        "value_in_range",
+        "language_match",
+        "deadline_feasibility",
+      ])
+    );
+  });
+
+  it("redistributes buyer-familiarity points when no preferred buyers", () => {
+    const withBuyers = {
+      ...baseProfile,
+      preferredBuyers: ["Oslo Kommune"],
+    };
+    const r1 = scoreTender(baseTender, baseProfile, { now }); // no buyers configured
+    const r2 = scoreTender(baseTender, withBuyers, { now });  // buyer matches
+    // Both should yield 100 on a perfect match — one via active signal, one via redistribution
+    expect(r1.score).toBe(100);
+    expect(r2.score).toBe(100);
+  });
+
+  it("scores 0 on a complete mismatch", () => {
+    const t = {
+      ...baseTender,
+      cpvCodes: ["45000000-7"],
+      regions: ["NO091"],
+      languages: ["de"],
+      estimatedValue: { amount: 1_000_000_000, currency: "USD" },
+      deadlineAt: "2026-05-02T00:00:00Z",
+    };
+    const r = scoreTender(t, baseProfile, { now });
+    expect(r.score).toBeLessThan(20);
+  });
+
+  it("score is bounded to [0, 100]", () => {
+    const r = scoreTender(baseTender, baseProfile, { now });
+    expect(r.score).toBeGreaterThanOrEqual(0);
+    expect(r.score).toBeLessThanOrEqual(100);
   });
 });
