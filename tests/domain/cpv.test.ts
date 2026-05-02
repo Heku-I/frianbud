@@ -22,3 +22,35 @@ describe("CpvService.lookup", () => {
     expect(cpv.lookup("99999999-9")).toBeUndefined();
   });
 });
+
+describe("CpvService.search", () => {
+  const cpv = createCpvService(fixture);
+
+  it("finds codes by English label substring", () => {
+    const results = cpv.search("cleaning");
+    expect(results.map((r) => r.code)).toContain("90910000-9");
+  });
+
+  it("finds codes by Norwegian label substring", () => {
+    const results = cpv.search("rengjøring");
+    expect(results.map((r) => r.code)).toContain("90910000-9");
+  });
+
+  it("is case-insensitive", () => {
+    expect(cpv.search("IT").length).toBeGreaterThan(0);
+    expect(cpv.search("it").length).toBeGreaterThan(0);
+  });
+
+  it("ranks more-specific matches above less-specific", () => {
+    const results = cpv.search("software programming");
+    expect(results[0]?.code).toBe("72200000-7");
+  });
+
+  it("respects limit", () => {
+    expect(cpv.search("services", 2)).toHaveLength(2);
+  });
+
+  it("returns empty array for no matches", () => {
+    expect(cpv.search("xyz_does_not_exist")).toEqual([]);
+  });
+});
