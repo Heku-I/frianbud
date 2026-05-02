@@ -43,3 +43,20 @@ export const regionMatchSignal: Signal = (tender, profile) => {
   }
   return { signal: "region_match", contribution: 0, detail: "no region overlap" };
 };
+
+// v1: binary in/out-of-band scoring. Partial credit near the edges may be added
+// later if golden tests show it materially improves ranking quality.
+export const valueInRangeSignal: Signal = (tender, profile) => {
+  const v = tender.estimatedValue;
+  if (!v) {
+    return { signal: "value_in_range", contribution: 0, detail: "no estimated value" };
+  }
+  if (v.currency !== profile.valueRange.currency) {
+    return { signal: "value_in_range", contribution: 0, detail: "currency mismatch" };
+  }
+  const { min, max } = profile.valueRange;
+  if (v.amount >= min && v.amount <= max) {
+    return { signal: "value_in_range", contribution: 15, detail: "value within band" };
+  }
+  return { signal: "value_in_range", contribution: 0, detail: "value outside band" };
+};
