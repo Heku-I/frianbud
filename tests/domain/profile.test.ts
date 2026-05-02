@@ -61,3 +61,82 @@ describe("ProfileService load/save", () => {
     await expect(svc.load()).rejects.toThrow(/schema/i);
   });
 });
+
+describe("ProfileService.advanceDraft (incomplete)", () => {
+  let dir: string;
+  let path: string;
+
+  beforeEach(() => {
+    dir = mkdtempSync(join(tmpdir(), "frianbud-test-"));
+    path = join(dir, "profile.json");
+  });
+
+  afterEach(() => {
+    rmSync(dir, { recursive: true, force: true });
+  });
+
+  it("empty draft reports all required fields missing", async () => {
+    const svc = createProfileService(path);
+    const result = await svc.advanceDraft({});
+    expect(result.saved).toBe(false);
+    if (!result.saved) {
+      expect(result.missing).toEqual(
+        expect.arrayContaining([
+          "companyName",
+          "whatWeDo",
+          "regions",
+          "valueRange",
+          "languages",
+          "cpvCodes",
+          "minLeadTimeDays",
+        ]),
+      );
+    }
+  });
+
+  it("partial draft reports only the still-missing fields", async () => {
+    const svc = createProfileService(path);
+    const result = await svc.advanceDraft({
+      companyName: "X",
+      whatWeDo: "Y",
+      regions: ["NO081"],
+    });
+    expect(result.saved).toBe(false);
+    if (!result.saved) {
+      expect(result.missing).not.toContain("companyName");
+      expect(result.missing).not.toContain("whatWeDo");
+      expect(result.missing).not.toContain("regions");
+      expect(result.missing).toContain("valueRange");
+    }
+  });
+
+  it("does not write file when draft is incomplete", async () => {
+    const svc = createProfileService(path);
+    await svc.advanceDraft({ companyName: "X" });
+    expect(existsSync(path)).toBe(false);
+  });
+
+  it("returns suggested CPVs when whatWeDo is set and cpvCodes is not", async () => {
+    const svc = createProfileService(path, {
+      suggestCpvCodes: (text) =>
+        text.includes("clean") ? ["90910000-9"] : [],
+    });
+    const result = await svc.advanceDraft({ whatWeDo: "We do cleaning." });
+    expect(result.saved).toBe(false);
+    if (!result.saved) {
+      expect(result.suggestedCpvs).toEqual(["90910000-9"]);
+    }
+  });
+
+  it("does not call suggester when cpvCodes already set", async () => {
+    let called = false;
+    const svc = createProfileService(path, {
+      suggestCpvCodes: () => {
+        called = true;
+        return ["x"];
+      },
+    });
+    await svc.advanceDraft({ whatWeDo: "anything", cpvCodes: ["72000000-5"] });
+    expect(called).toBe(false);
+  });
+});

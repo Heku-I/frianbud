@@ -7,6 +7,16 @@ import {
   type ProfileDraft,
 } from "../types.js";
 
+const REQUIRED_FIELDS: Array<keyof Profile> = [
+  "companyName",
+  "whatWeDo",
+  "regions",
+  "valueRange",
+  "languages",
+  "cpvCodes",
+  "minLeadTimeDays",
+];
+
 export type AdvanceResult =
   | { saved: true; profile: Profile }
   | {
@@ -58,10 +68,34 @@ export function createProfileService(
   return {
     load,
     save: persist,
-    async advanceDraft(_partial) {
-      void ProfileDraftSchema; // referenced below in next tasks
-      void deps;
-      throw new Error("not implemented");
+    async advanceDraft(partial) {
+      const draft = ProfileDraftSchema.parse(partial);
+      const missing: string[] = [];
+      for (const field of REQUIRED_FIELDS) {
+        const value = (draft as Record<string, unknown>)[field];
+        if (value === undefined) missing.push(field);
+        else if (Array.isArray(value) && value.length === 0) missing.push(field);
+      }
+
+      let suggestedCpvs: string[] | undefined;
+      if (
+        missing.includes("cpvCodes") &&
+        typeof draft.whatWeDo === "string" &&
+        draft.whatWeDo.length > 0 &&
+        deps.suggestCpvCodes
+      ) {
+        const s = deps.suggestCpvCodes(draft.whatWeDo);
+        if (s.length > 0) suggestedCpvs = s;
+      }
+
+      if (missing.length > 0) {
+        return suggestedCpvs === undefined
+          ? { saved: false as const, missing, current: draft }
+          : { saved: false as const, missing, suggestedCpvs, current: draft };
+      }
+
+      // Complete branch handled in next task.
+      throw new Error("complete-draft branch not yet implemented");
     },
   };
 }
