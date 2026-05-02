@@ -3,7 +3,7 @@ import { mkdtempSync, rmSync, existsSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createProfileService } from "../../src/domain/profile.js";
-import type { Profile } from "../../src/types.js";
+import type { Profile, ProfileDraft } from "../../src/types.js";
 
 function makeProfile(overrides: Partial<Profile> = {}): Profile {
   return {
@@ -138,5 +138,52 @@ describe("ProfileService.advanceDraft (incomplete)", () => {
     });
     await svc.advanceDraft({ whatWeDo: "anything", cpvCodes: ["72000000-5"] });
     expect(called).toBe(false);
+  });
+});
+
+describe("ProfileService.advanceDraft (complete)", () => {
+  let dir: string;
+  let path: string;
+
+  beforeEach(() => {
+    dir = mkdtempSync(join(tmpdir(), "frianbud-test-"));
+    path = join(dir, "profile.json");
+  });
+
+  afterEach(() => {
+    rmSync(dir, { recursive: true, force: true });
+  });
+
+  it("persists and returns the profile when draft is complete", async () => {
+    const svc = createProfileService(path);
+    const complete = makeProfile();
+    const result = await svc.advanceDraft(complete);
+    expect(result.saved).toBe(true);
+    if (result.saved) {
+      expect(result.profile).toEqual(complete);
+    }
+    expect(existsSync(path)).toBe(true);
+    const loaded = await svc.load();
+    expect(loaded).toEqual(complete);
+  });
+
+  it("fills in optional fields with defaults when not supplied", async () => {
+    const svc = createProfileService(path);
+    const minimal: ProfileDraft = {
+      companyName: "X",
+      whatWeDo: "Y",
+      regions: ["NO081"],
+      valueRange: { min: 0, max: 1, currency: "NOK" },
+      languages: ["no"],
+      cpvCodes: ["90910000-9"],
+      minLeadTimeDays: 0,
+    };
+    const result = await svc.advanceDraft(minimal);
+    expect(result.saved).toBe(true);
+    if (result.saved) {
+      expect(result.profile.certifications).toEqual([]);
+      expect(result.profile.preferredBuyers).toEqual([]);
+      expect(result.profile.exclusions).toEqual({ keywords: [], cpvCodes: [] });
+    }
   });
 });

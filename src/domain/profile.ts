@@ -94,8 +94,22 @@ export function createProfileService(
           : { saved: false as const, missing, suggestedCpvs, current: draft };
       }
 
-      // Complete branch handled in next task.
-      throw new Error("complete-draft branch not yet implemented");
+      const complete: Profile = {
+        schemaVersion: 1,
+        companyName: draft.companyName!,
+        whatWeDo: draft.whatWeDo!,
+        regions: draft.regions!,
+        valueRange: draft.valueRange!,
+        languages: draft.languages!,
+        cpvCodes: draft.cpvCodes!,
+        certifications: draft.certifications ?? [],
+        exclusions: draft.exclusions ?? { keywords: [], cpvCodes: [] },
+        preferredBuyers: draft.preferredBuyers ?? [],
+        minLeadTimeDays: draft.minLeadTimeDays!,
+      };
+      const validated = ProfileSchema.parse(complete);
+      await persist(validated);
+      return { saved: true as const, profile: validated };
     },
   };
 }
