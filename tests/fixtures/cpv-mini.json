@@ -1,0 +1,8 @@
+[
+  { "code": "45000000-7", "label_en": "Construction work", "label_no": "Bygge- og anleggsarbeid", "parent": null },
+  { "code": "45100000-8", "label_en": "Site preparation work", "label_no": "Klargjøring av byggetomt", "parent": "45000000-7" },
+  { "code": "45110000-1", "label_en": "Building demolition and wrecking work", "label_no": "Riving av bygninger", "parent": "45100000-8" },
+  { "code": "72000000-5", "label_en": "IT services", "label_no": "IT-tjenester", "parent": null },
+  { "code": "72200000-7", "label_en": "Software programming and consultancy services", "label_no": "Programmering og konsulenttjenester", "parent": "72000000-5" },
+  { "code": "90910000-9", "label_en": "Cleaning services", "label_no": "Rengjøringstjenester", "parent": null }
+]
