@@ -1,0 +1,33 @@
+{
+  "id": "2026-107921",
+  "buyer": [
+    {
+      "id": "2edb9f8fdddf9dca57e20d3af9d2cd94",
+      "organizationId": "921627009",
+      "name": "Statsforvalterens fellestjenester"
+    }
+  ],
+  "heading": "Lopphavet Marine verneområde",
+  "description": "Stjernsundrevet er Norges største korallrev på fjordterskel og en stor verneverdi i Lopphavet marine verneområde. Verneområdestyret utarbeider nå en ny forvaltningsplan for verneområdet, og har i den sammenheng et behov for å samle og oppdatere kunnskap om Stjernsundrevet. \n\nI den forbindelsen har styret for Lopphavet marine verneområde behov for bistand i kartlegging av området. Det er derfor behov for en ressurs eller flere som kan bistå oppdragsgiver. Det skal lages en visuell kartlegging av korallrevet, utarbeides en rapport i forbindelse med funnene i den visuelle undersøkelsen. Videre ønskes det forlag til videre overvåkingsprogram for å følge opp tilstanden. Det skal også lages en sammenstilling av eksisterende kunnskap om Stjernesundrevet. \n\nFor en nærmere beskrivelse av leveransen se Del 2 Bilag 1 Oppdragsbeskrivelse og krav til tjenesten.",
+  "locationId": [
+    "NO073"
+  ],
+  "estimatedValue": {
+    "currencyCode": "NOK",
+    "amount": 1500000
+  },
+  "type": "ANNOUNCEMENT_OF_COMPETITION",
+  "allTypes": [
+    "COMPETITION",
+    "ANNOUNCEMENT_OF_COMPETITION"
+  ],
+  "status": "ACTIVE",
+  "issueDate": "2026-05-01T11:33:48Z",
+  "deadline": "2026-06-01T10:00:00Z",
+  "sentToTed": false,
+  "publicationDate": "2026-05-02",
+  "placeOfPerformance": [
+    "Finnmark/Finnmárku/Finmarkku"
+  ],
+  "procurementStrategicLabels": []
+}

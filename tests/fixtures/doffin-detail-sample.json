@@ -1,0 +1,1915 @@
+{
+  "id": "2026-107918",
+  "eFormId": "d54f165b-f145-41ed-b84d-3c678157130c",
+  "procedureId": "22b8ae62-cb41-463f-ad68-9a0633266b7c",
+  "heading": "Totalentreprise Bryn skole",
+  "description": "Bryn skole har behov for større kapasitet, og skolen har et rehabiliteringsbehov. Kapasiteten skal økes fra en 2,5-parallell til en 3-parallell skole. I tillegg er det en mottaksklasse, og en spesialavdeling innen autismespekteret med 9 elever.\n\nNåværende idrettsbygg og nybygg skal rives. Det er planlagt et nytt bygg (Nybygget) og ny gymsal, totalt ca. 7.000m2 BRA. De tre verneverdige byggene, Hovedbygget og de to villaene, skal rehabiliteres, totalt ca. 3.600 m2. Arbeidene omfatter også diverse ny infrastruktur i grunnen, ny trafostasjon samt utomhusarbeider inkl. støyskjerm.\n\nDagens skoletomt er på 11.811 m2. Planområdet ligger i Teisenveien 40 i bydel Alna i Oslo kommune.",
+  "buyer": [
+    {
+      "id": "924599545",
+      "name": "Oslo kommune v/ Oslobygg KF"
+    }
+  ],
+  "locationId": [
+    "NO081"
+  ],
+  "placeOfPerformance": [
+    "Oslo"
+  ],
+  "issueDate": "2026-05-01T15:33:10Z",
+  "deadline": "2026-05-28T10:00:00Z",
+  "qualificationDeadline": null,
+  "noticeType": "ANNOUNCEMENT_OF_COMPETITION",
+  "allTypes": [
+    "ANNOUNCEMENT_OF_COMPETITION",
+    "COMPETITION"
+  ],
+  "allCpvCodes": [
+    "45000000",
+    "45200000",
+    "45210000",
+    "45212225",
+    "45214200",
+    "45214210",
+    "45212000",
+    "45212200",
+    "45212220",
+    "45214000"
+  ],
+  "directCpvCodes": [
+    "45000000",
+    "45200000",
+    "45210000",
+    "45212225",
+    "45214200",
+    "45214210"
+  ],
+  "parentCpvCodes": [
+    "45212000",
+    "45212200",
+    "45212220",
+    "45214000"
+  ],
+  "noticeStatus": "ACTIVE",
+  "allReceivedTenders": null,
+  "preferredPublicationDateTed": null,
+  "plannedDateTed": null,
+  "competitionDocsUrl": "https://app.artifik.no/procurements/4592",
+  "sentToTed": true,
+  "regulationUrl": "https://lovdata.no/dokument/SF/forskrift/2016-08-12-974?q=foa",
+  "core": {
+    "estimatedValue": null,
+    "mainActivity": "gen-pub"
+  },
+  "eform": [
+    {
+      "title": "block01",
+      "sectionId": "1",
+      "label": "Kjøper",
+      "useLabelAsValue": false,
+      "value": null,
+      "sections": [
+        {
+          "title": "block0101",
+          "sectionId": "1.1",
+          "label": "Kjøper",
+          "useLabelAsValue": false,
+          "value": null,
+          "sections": [
+            {
+              "title": "block010101",
+              "sectionId": null,
+              "label": "Offisielt navn",
+              "useLabelAsValue": false,
+              "value": "Oslo kommune v/ Oslobygg KF",
+              "sections": null
+            },
+            {
+              "title": "block010102",
+              "sectionId": null,
+              "label": "Juridisk type kjøper",
+              "useLabelAsValue": false,
+              "value": "Offentligrettslig organ",
+              "sections": null
+            },
+            {
+              "title": "block010103",
+              "sectionId": null,
+              "label": "Oppdragsgivers virksomhet",
+              "useLabelAsValue": false,
+              "value": "Alminnelig offentlig tjenesteyting",
+              "sections": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "block02",
+      "sectionId": "2",
+      "label": "Prosedyre",
+      "useLabelAsValue": false,
+      "value": null,
+      "sections": [
+        {
+          "title": "block0201",
+          "sectionId": "2.1",
+          "label": "Prosedyre",
+          "useLabelAsValue": false,
+          "value": null,
+          "sections": [
+            {
+              "title": "block020101",
+              "sectionId": null,
+              "label": "Tittel",
+              "useLabelAsValue": false,
+              "value": "Totalentreprise Bryn skole",
+              "sections": null
+            },
+            {
+              "title": "block020102",
+              "sectionId": null,
+              "label": "Beskrivelse",
+              "useLabelAsValue": false,
+              "value": "Bryn skole har behov for større kapasitet, og skolen har et rehabiliteringsbehov. Kapasiteten skal økes fra en 2,5-parallell til en 3-parallell skole. I tillegg er det en mottaksklasse, og en spesialavdeling innen autismespekteret med 9 elever. Nåværende idrettsbygg og nybygg skal rives. Det er planlagt et nytt bygg (Nybygget) og ny gymsal, totalt ca. 7.000m2 BRA. De tre verneverdige byggene, Hovedbygget og de to villaene, skal rehabiliteres, totalt ca. 3.600 m2. Arbeidene omfatter også diverse ny infrastruktur i grunnen, ny trafostasjon samt utomhusarbeider inkl. støyskjerm. Dagens skoletomt er på 11.811 m2. Planområdet ligger i Teisenveien 40 i bydel Alna i Oslo kommune.",
+              "sections": null
+            },
+            {
+              "title": "block020103",
+              "sectionId": null,
+              "label": "Prosedyreidentifikator",
+              "useLabelAsValue": false,
+              "value": "22b8ae62-cb41-463f-ad68-9a0633266b7c",
+              "sections": null
+            },
+            {
+              "title": "block020105",
+              "sectionId": null,
+              "label": "Intern identifikator",
+              "useLabelAsValue": false,
+              "value": "4592",
+              "sections": null
+            },
+            {
+              "title": "block020106",
+              "sectionId": null,
+              "label": "Type prosedyre",
+              "useLabelAsValue": false,
+              "value": "Åpen",
+              "sections": null
+            },
+            {
+              "title": "block020107",
+              "sectionId": null,
+              "label": "Prosedyren er en hasteprosedyre, Usann",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": null
+            },
+            {
+              "title": "block020108",
+              "sectionId": null,
+              "label": "Begrunnelse for den akselererte prosedyren",
+              "useLabelAsValue": false,
+              "value": "",
+              "sections": null
+            },
+            {
+              "title": "block020109",
+              "sectionId": null,
+              "label": "Hovedtrekkene i prosedyren",
+              "useLabelAsValue": false,
+              "value": "",
+              "sections": null
+            },
+            {
+              "title": "block020110",
+              "sectionId": "2.1.1",
+              "label": "Hensikt",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block02011001",
+                  "sectionId": null,
+                  "label": "Kontraktens art",
+                  "useLabelAsValue": false,
+                  "value": "Bygge- og anleggsarbeid",
+                  "sections": null
+                },
+                {
+                  "title": "block02011003",
+                  "sectionId": null,
+                  "label": "Hoved klassifisering",
+                  "useLabelAsValue": false,
+                  "value": "Bygge- og anleggsvirksomhet",
+                  "sections": null
+                },
+                {
+                  "title": "block02011005",
+                  "sectionId": null,
+                  "label": "Ytterligere klassifisering",
+                  "useLabelAsValue": false,
+                  "value": "Deler av eller komplette byggekonstruksjoner samt anleggsarbeider",
+                  "sections": null
+                },
+                {
+                  "title": "block02011005",
+                  "sectionId": null,
+                  "label": "Ytterligere klassifisering",
+                  "useLabelAsValue": false,
+                  "value": "Byggearbeid",
+                  "sections": null
+                },
+                {
+                  "title": "block02011005",
+                  "sectionId": null,
+                  "label": "Ytterligere klassifisering",
+                  "useLabelAsValue": false,
+                  "value": "Byggningsarbeid i forbindelse med Idrettshall",
+                  "sections": null
+                },
+                {
+                  "title": "block02011005",
+                  "sectionId": null,
+                  "label": "Ytterligere klassifisering",
+                  "useLabelAsValue": false,
+                  "value": "Bygge- og anleggsarbeid i forbindelse med skolebygninger",
+                  "sections": null
+                },
+                {
+                  "title": "block02011005",
+                  "sectionId": null,
+                  "label": "Ytterligere klassifisering",
+                  "useLabelAsValue": false,
+                  "value": "Bygge- og anleggsarbeid i forbindelse med Grunnskole",
+                  "sections": null
+                }
+              ]
+            },
+            {
+              "title": "block020111",
+              "sectionId": "2.1.2",
+              "label": "Sted for gjennomføring",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block02011104",
+                  "sectionId": null,
+                  "label": "Underenhet i land",
+                  "useLabelAsValue": false,
+                  "value": "Oslo (NO081)",
+                  "sections": null
+                },
+                {
+                  "title": "block02011105",
+                  "sectionId": null,
+                  "label": "Land",
+                  "useLabelAsValue": false,
+                  "value": "Norge",
+                  "sections": null
+                }
+              ]
+            },
+            {
+              "title": "block020113",
+              "sectionId": "2.1.4",
+              "label": "Generell informasjon",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block02011303",
+                  "sectionId": null,
+                  "label": "Rettslig grunnlag",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": null
+                },
+                {
+                  "title": "block02011304",
+                  "sectionId": null,
+                  "label": "Direktiv 2014/24/EU",
+                  "useLabelAsValue": true,
+                  "value": null,
+                  "sections": null
+                }
+              ]
+            },
+            {
+              "title": "block020115",
+              "sectionId": "2.1.6",
+              "label": "Grunnlag for avvisning",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block02011501",
+                  "sectionId": null,
+                  "label": "Sources of grounds for exclusion",
+                  "useLabelAsValue": false,
+                  "value": "Notice",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Analogous situation like bankruptcy, insolvency or arrangement with creditors under national law",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandøren i en konkurssituasjon? Angi hvorfor man under nevnte omstendigheter likevel er i stand til å utføre kontrakten, tatt i betraktning gjeldende nasjonale bestemmelser og tiltak vedrørende fortsettelse av forretningsaktivitetene? Det er ikke nødvendig å angi disse opplysningene hvis avvisning av leverandører, som befinner seg i en slik situasjon, er gjort obligatorisk i henhold til gjeldende nasjonal rett uten mulighet for unntak, når leverandør likevel er i stand til å utføre kontrakten.",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Bankruptcy",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandøren i en konkurssituasjon? Angi hvorfor man under nevnte omstendigheter likevel er i stand til å utføre kontrakten, tatt i betraktning gjeldende nasjonale bestemmelser og tiltak vedrørende fortsettelse av forretningsaktivitetene? Det er ikke nødvendig å angi disse opplysningene hvis avvisning av leverandører, som befinner seg i en slik situasjon, er gjort obligatorisk i henhold til gjeldende nasjonal rett uten mulighet for unntak, når leverandør likevel er i stand til å utføre kontrakten.",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Corruption",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandøren selv eller en person, som er medlem av leverandørens administrasjons-, ledelses- eller kontrollorgan eller har kompetanse til å representere eller kontrollere eller treffe beslutninger i slike organer, ved rettskraftig dom blitt dømt for korrupsjon ved en dom avsagt for ikke mer enn fem år siden, eller en avvisningsperiode fastsatt direkte i dommen som fortsatt gjelder? Korrupsjon som definert i artikkel 3 i konvensjonen om bekjempelse av korrupsjon, som involverer tjenestemenn i De Europeiske Fellesskapene eller i Den Europeiske Unions medlemsstater (EUT C 195 av 25.6.1997, s. 1), og i artikkel 2, stk. 1, i Rådets rammeavgjørelse 2003/568/RIA av 22. juli 2003 om bekjempelse av korrupsjon i den private sektor (EUT L 192 av 31.7.2003, s. 54). Denne avvisningsgrunnen omfatter også korrupsjon som definert i nasjonal rett for oppdragsgiveren eller leverandøren.",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Arrangement with creditors",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandøren i en situasjon hvor han har fått tvungen gjeldsordning? Angi hvorfor man under nevnte omstendigheter likevel er i stand til å utføre kontrakten, tatt i betraktning gjeldende nasjonale bestemmelser og tiltak vedrørende fortsettelse av forretningsaktivitetene? Det er ikke nødvendig å angi disse opplysningene hvis avvisning av leverandører, som befinner seg i en slik situasjon, er gjort obligatorisk i henhold til gjeldende nasjonal rett uten mulighet for unntak, når leverandør likevel er i stand til å utføre kontrakten.",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Participation in a criminal organisation",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandøren selv eller en person, som er medlem av leverandørens administrasjons-, ledelses- eller kontrollorgan eller har kompetanse til å representere eller kontrollere eller treffe beslutninger i slike organer, ved rettskraftig dom blitt dømt for deltakelse i en kriminell organisasjon ved en dom avsagt for ikke mer enn fem år siden, eller en avvisningsperiode fastsatt direkte i dommen som fortsatt gjelder? Deltakelse i en kriminell organisasjon som definert i artikkel 2 i Rådets rammeavgjørelse 2008/841/RIA av 24. oktober 2008 om bekjempelse av organisert kriminalitet (EUT L 300 av 11.11.2008, s. 42).",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Agreements with other economic operators aimed at distorting competition",
+                  "useLabelAsValue": false,
+                  "value": "Har leverandør inngått avtale(r) med andre leverandører med hensikt å vri konkurransen?",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Breaching of obligations in the fields of environmental law",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandøren kjent med å ha begått brudd på bestemmelser om miljø slik som de fremgår av nasjonal rett, den relevante kunngjøringen eller anskaffelsesdokumentene eller artikkel 18 (2) i direktiv 2014/24/EU.",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Money laundering or terrorist financing",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandøren selv eller en person, som er medlem av leverandørens administrasjons-, ledelses- eller kontrollorgan eller har kompetanse til å representere eller kontrollere eller treffe beslutninger i slike organer, ved rettskraftig dom blitt dømt for hvitvasking av penger eller finansiering av terrorisme ved en dom avsagt for ikke mer enn fem år siden, eller en avvisningsperiode fastsatt direkte i dommen som fortsatt gjelder? Hvitvasking av penger eller finansiering av terrorismeSom definert i artikkel 1 i Europaparlamentets og Rådets direktiv 2005/60/EF av 26. oktober 2005 om forebyggende tiltak mot bruk av det finansielle system til hvitvasking av penger og finansiering av terrorisme (EUT L 309 av 25.11.2005, s. 15).",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Fraud",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandøren selv eller en person, som er medlem av leverandørens administrasjons-, ledelses- eller kontrollorgan eller har kompetanse til å representere eller kontrollere eller treffe beslutninger i slike organer, ved rettskraftig dom blitt dømt for bedrageri ved en dom avsagt for ikke mer enn fem år siden, eller en avvisningsperiode fastsatt direkte i dommen som fortsatt gjelder? Bedrageri som omhandlet i artikkel 1 i konvensjonen om beskyttelse av De Europeiske Fellesskapenes finansielle interesser (EFT C 316 av 27.11.1995, s. 48).",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Child labour and including other forms of trafficking in human beings",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandøren selv eller en person, som er medlem av leverandørens administrasjons-, ledelses- eller kontrollorgan eller har kompetanse til å representere eller kontrollere eller treffe beslutninger i slike organer, ved rettskraftig dom blitt dømt for barnearbeid og andre former for menneskehandel ved en dom avsagt for ikke mer enn fem år siden, eller en avvisningsperiode fastsatt direkte i dommen som fortsatt gjelder? Barnearbeid og andre former for menneskehandel som definert i artikkel 2 i Europaparlamentets og Rådets direktiv 2011/36/EU av 5. april 2011 om forebygging og bekjempelse av menneskehandel og beskyttelse av dets ofre, og om erstatning av Rådets rammeavgjørelse 2002/629/RIA (EUT L 101 av 15.4.2011, s. 1).",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Insolvency",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandøren i en insolvenssituasjon? Angi hvorfor man under nevnte omstendigheter likevel er i stand til å utføre kontrakten, tatt i betraktning gjeldende nasjonale bestemmelser og tiltak vedrørende fortsettelse av forretningsaktivitetene? Det er ikke nødvendig å angi disse opplysningene hvis avvisning av leverandører, som befinner seg i en slik situasjon, er gjort obligatorisk i henhold til gjeldende nasjonal rett uten mulighet for unntak, når leverandør likevel er i stand til å utføre kontrakten.",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Breaching of obligations in the fields of labour law",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandøren kjent med å ha begått brudd på bestemmelser om arbeidsforhold slik som de fremgår av nasjonal rett, den relevante kunngjøringen eller anskaffelsesdokumentene eller artikkel 18 (2) i direktiv 2014/24/EU.",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Assets being administered by liquidator",
+                  "useLabelAsValue": false,
+                  "value": "Angi hvorfor man under nevnte omstendigheter likevel er i stand til å utføre kontrakten, tatt i betraktning gjeldende nasjonale bestemmelser og tiltak vedrørende fortsettelse av forretningsaktivitetene? Det er ikke nødvendig å angi disse opplysningene hvis avvisning av leverandører, som befinner seg i en slik situasjon, er gjort obligatorisk i henhold til gjeldende nasjonal rett uten mulighet for unntak, når leverandør likevel er i stand til å utføre kontrakten.",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Misrepresentation, withheld information, unable to provide required documents and obtained confidential information of this procedure",
+                  "useLabelAsValue": false,
+                  "value": "Har leverandøren: a) gitt grovt uriktige opplysninger ved meddelelsen av opplysningene som kreves for å kontrollere at det ikke er grunnlag for avvisning, eller av at kvalifikasjonskravene er oppfylt, b) unnlatt å gi slike opplysninger, c) tatt forbehold om straks å fremlegge de støttedokumenter som oppdragsgiver anmoder om, eller d) urettmessig påvirket oppdragsgivers beslutningsprosess for å tilegne seg konfidensiell informasjon som kan gi denne en urettmessig fordel i forbindelse med konkurransen, eller uaktsomt har gitt misvisende opplysninger som kan få vesentlig innflytelse på beslutninger om avvisning, utvelgelse eller tildeling?",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Conflict of interest due to its participation in the procurement procedure",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandør oppmerksom på en interessekonflikt som angitt i nasjonal rett, den relevante kunngjøring eller anskaffelsesdokumentene?",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Direct or indirect involvement in the preparation of this procurement procedure",
+                  "useLabelAsValue": false,
+                  "value": "Har leverandør eller en virksomhet tilknyttet leverandøren gitt råd til oppdragsgiver eller på annen måte vært involvert i planleggingen av konkurransen?",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Grave professional misconduct",
+                  "useLabelAsValue": false,
+                  "value": "Har leverandøren begått alvorlige feil i yrkesutøvelsen? Hvis det er relevant, se definisjoner i nasjonal rett, den relevante kunngjøring eller anskaffelsesdokumentene.",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Early termination, damages, or other comparable sanctions",
+                  "useLabelAsValue": false,
+                  "value": "Har leverandør begått vesentlig kontraktsbrudd i forbindelse med oppfyllelsen av en tidligere offentlig kontrakt, en tidligere kontrakt med en offentlig oppdragsgiver eller en tidligere konsesjonskontrakt, der bruddet har ført til heving av kontrakten, erstatning eller andre lignende sanksjoner?",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Breaching of obligations in the fields of social law",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandøren kjent med å ha begått brudd på bestemmelser om sosiale forhold slik som de fremgår av nasjonal rett, den relevante kunngjøringen eller anskaffelsesdokumentene eller artikkel 18 (2) i direktiv 2014/24/EU.",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Breaching obligation relating to payment of social security contributions",
+                  "useLabelAsValue": false,
+                  "value": "Har leverandør unnlatt å oppfylle alle sine forpliktelser til å betale trygdeavgifter både i det land han er etablert i, og i oppdragsgivers medlemsstat, hvis dette er et annet land enn det han er etablert i?",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Business activities are suspended",
+                  "useLabelAsValue": false,
+                  "value": "Angi hvorfor man under nevnte omstendigheter likevel er i stand til å utføre kontrakten, tatt i betraktning gjeldende nasjonale bestemmelser og tiltak vedrørende fortsettelse av forretningsaktivitetene? Det er ikke nødvendig å angi disse opplysningene hvis avvisning av leverandører, som befinner seg i en slik situasjon, er gjort obligatorisk i henhold til gjeldende nasjonal rett uten mulighet for unntak, når leverandør likevel er i stand til å utføre kontrakten.",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Breaching obligation relating to payment of taxes",
+                  "useLabelAsValue": false,
+                  "value": "Har leverandøren unnlatt å oppfylle alle sine forpliktelser til å betale skatter og avgifter både i det land han er etablert i, og i oppdragsgivers medlemsstat, hvis dette er et annet land enn det han er etablert i?",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Terrorist offences or offences linked to terrorist activities",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandøren selv eller en person, som er medlem av leverandørens administrasjons-, ledelses- eller kontrollorgan eller har kompetanse til å representere eller kontrollere eller treffe beslutninger i slike organer, ved rettskraftig dom blitt dømt for terrorhandlinger eller straffbare handlinger med forbindelse til terroraktivitetved en dom avsagt for ikke mer enn fem år siden, eller en avvisningsperiode fastsatt direkte i dommen som fortsatt gjelder? Terrorhandlinger eller straffbare handlinger med forbindelse til terroraktivitet som definert i artikkel 1 og 3 i Rådets rammeavgjørelse 2002/475/RIA av 13. juni 2002 om bekjempelse av terrorisme (EFT L 164 af 22.6.2002, s. 3). Denne avvisningsgrunnen omfatter også oppfordring til, medvirkning til eller forsøk på å begå slike handlinger som omhandlet i artikkel 4 i nevnte rammeavgjørelse.",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Offence concerning its professional conduct in the domain of defence procurement",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandøren selv eller en person, som er medlem av leverandørens administrasjons-, ledelses- eller kontrollorgan eller har kompetanse til å representere eller kontrollere eller treffe beslutninger i slike organer, ved rettskraftig dom blitt dømt for lovbrudd vedrørende profesjonell atferd innen forsvarsanskaffelser?",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Lack of reliability to exclude risks to the security of the country",
+                  "useLabelAsValue": false,
+                  "value": "Er leverandøren vurdert til å mangle pålitelighet som er nødvendig for å utelukke risiko for nasjonal sikkerhet?",
+                  "sections": null
+                },
+                {
+                  "title": "block02011502",
+                  "sectionId": null,
+                  "label": "Breaching of obligations set under purely national exclusion grounds",
+                  "useLabelAsValue": false,
+                  "value": "Oppdragsgiver skal angi at i Norge foreligger det nasjonale avvisningsgrunner. Disse skal være beskrevet i anskaffelsesdokumentene. Leverandøren må besvare om han er i en eller flere av de situasjonene som er beskrevet i de nasjonale avvisningsgrunnene.",
+                  "sections": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "block04",
+      "sectionId": "5",
+      "label": "Delkontrakt",
+      "useLabelAsValue": false,
+      "value": null,
+      "sections": [
+        {
+          "title": "block0401",
+          "sectionId": "5.1",
+          "label": "Delkontrakt",
+          "useLabelAsValue": false,
+          "value": "LOT-0001",
+          "sections": [
+            {
+              "title": "block040101",
+              "sectionId": null,
+              "label": "Tittel",
+              "useLabelAsValue": false,
+              "value": "Totalentreprise Bryn skole",
+              "sections": null
+            },
+            {
+              "title": "block040102",
+              "sectionId": null,
+              "label": "Beskrivelse",
+              "useLabelAsValue": false,
+              "value": "Bryn skole har behov for større kapasitet, og skolen har et rehabiliteringsbehov. Kapasiteten skal økes fra en 2,5-parallell til en 3-parallell skole. I tillegg er det en mottaksklasse, og en spesialavdeling innen autismespekteret med 9 elever. Nåværende idrettsbygg og nybygg skal rives. Det er planlagt et nytt bygg (Nybygget) og ny gymsal, totalt ca. 7.000m2 BRA. De tre verneverdige byggene, Hovedbygget og de to villaene, skal rehabiliteres, totalt ca. 3.600 m2. Arbeidene omfatter også diverse ny infrastruktur i grunnen, ny trafostasjon samt utomhusarbeider inkl. støyskjerm. Dagens skoletomt er på 11.811 m2. Planområdet ligger i Teisenveien 40 i bydel Alna i Oslo kommune.",
+              "sections": null
+            },
+            {
+              "title": "block040103",
+              "sectionId": null,
+              "label": "Intern identifikator",
+              "useLabelAsValue": false,
+              "value": "6932",
+              "sections": null
+            },
+            {
+              "title": "block040104",
+              "sectionId": "5.1.1",
+              "label": "Hensikt",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block04010401",
+                  "sectionId": null,
+                  "label": "Kontraktens art",
+                  "useLabelAsValue": false,
+                  "value": "Bygge- og anleggsarbeid",
+                  "sections": null
+                },
+                {
+                  "title": "block04010403",
+                  "sectionId": null,
+                  "label": "Hoved klassifisering",
+                  "useLabelAsValue": false,
+                  "value": "Bygge- og anleggsvirksomhet",
+                  "sections": null
+                },
+                {
+                  "title": "block04010404",
+                  "sectionId": null,
+                  "label": "Ytterligere klassifisering",
+                  "useLabelAsValue": false,
+                  "value": "Deler av eller komplette byggekonstruksjoner samt anleggsarbeider",
+                  "sections": null
+                },
+                {
+                  "title": "block04010404",
+                  "sectionId": null,
+                  "label": "Ytterligere klassifisering",
+                  "useLabelAsValue": false,
+                  "value": "Byggearbeid",
+                  "sections": null
+                },
+                {
+                  "title": "block04010404",
+                  "sectionId": null,
+                  "label": "Ytterligere klassifisering",
+                  "useLabelAsValue": false,
+                  "value": "Byggningsarbeid i forbindelse med Idrettshall",
+                  "sections": null
+                },
+                {
+                  "title": "block04010404",
+                  "sectionId": null,
+                  "label": "Ytterligere klassifisering",
+                  "useLabelAsValue": false,
+                  "value": "Bygge- og anleggsarbeid i forbindelse med skolebygninger",
+                  "sections": null
+                },
+                {
+                  "title": "block04010404",
+                  "sectionId": null,
+                  "label": "Ytterligere klassifisering",
+                  "useLabelAsValue": false,
+                  "value": "Bygge- og anleggsarbeid i forbindelse med Grunnskole",
+                  "sections": null
+                },
+                {
+                  "title": "block04010406",
+                  "sectionId": null,
+                  "label": "Alternativer",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": [
+                    {
+                      "title": "block0401040601",
+                      "sectionId": null,
+                      "label": "Kjøper forbeholder seg retten til tilleggskjøp fra entreprenøren, som beskrevet her",
+                      "useLabelAsValue": false,
+                      "value": "Opsjoner fremgår av konkurransegrunnlaget",
+                      "sections": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "block040105",
+              "sectionId": "5.1.2",
+              "label": "Sted for gjennomføring",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block04010504",
+                  "sectionId": null,
+                  "label": "Underenhet i land",
+                  "useLabelAsValue": false,
+                  "value": "Oslo (NO081)",
+                  "sections": null
+                },
+                {
+                  "title": "block04010505",
+                  "sectionId": null,
+                  "label": "Land",
+                  "useLabelAsValue": false,
+                  "value": "Norge",
+                  "sections": null
+                },
+                {
+                  "title": "block04010507",
+                  "sectionId": null,
+                  "label": "Tilleggsinformasjon",
+                  "useLabelAsValue": false,
+                  "value": "",
+                  "sections": null
+                }
+              ]
+            },
+            {
+              "title": "block040106",
+              "sectionId": "5.1.3",
+              "label": "Anslått varighet",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block04010601",
+                  "sectionId": null,
+                  "label": "Startdato",
+                  "useLabelAsValue": false,
+                  "value": "30.06.2026",
+                  "sections": null
+                },
+                {
+                  "title": "block04010602",
+                  "sectionId": null,
+                  "label": "Sluttdato",
+                  "useLabelAsValue": false,
+                  "value": "12.05.2029",
+                  "sections": null
+                }
+              ]
+            },
+            {
+              "title": "block040109",
+              "sectionId": "5.1.6",
+              "label": "Generell informasjon",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block04010904",
+                  "sectionId": null,
+                  "label": "Reservert deltakelse",
+                  "useLabelAsValue": false,
+                  "value": "Ingen",
+                  "sections": null
+                },
+                {
+                  "title": "block04010906",
+                  "sectionId": null,
+                  "label": "Anskaffelsesprosjekt ikke finansiert med EU-midler.",
+                  "useLabelAsValue": true,
+                  "value": null,
+                  "sections": null
+                },
+                {
+                  "title": "block04010908",
+                  "sectionId": null,
+                  "label": "Anskaffelsen er omfattet av avtalen om offentlige anskaffelser (GPA), Sann",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": null
+                }
+              ]
+            },
+            {
+              "title": "block040110",
+              "sectionId": "5.1.7",
+              "label": "Strategiske anskaffelser",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block04011001",
+                  "sectionId": null,
+                  "label": "Mål for strategiske anskaffelser",
+                  "useLabelAsValue": false,
+                  "value": "Reduksjon av miljøpåvirkning",
+                  "sections": [
+                    {
+                      "title": "block0401100101",
+                      "sectionId": null,
+                      "label": "Beskrivelse",
+                      "useLabelAsValue": false,
+                      "value": "Reduksjon av miljøpåvirkning",
+                      "sections": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "block040112",
+              "sectionId": "5.1.9",
+              "label": "Utvelgelseskriterier",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block04011201",
+                  "sectionId": null,
+                  "label": "Sources of selection criteria",
+                  "useLabelAsValue": false,
+                  "value": "Notice",
+                  "sections": null
+                },
+                {
+                  "title": "block04011202",
+                  "sectionId": null,
+                  "label": "Kriterium",
+                  "useLabelAsValue": false,
+                  "value": "Enrolment in a trade register",
+                  "sections": [
+                    {
+                      "title": "block0401120201",
+                      "sectionId": null,
+                      "label": "Beskrivelse",
+                      "useLabelAsValue": false,
+                      "value": "Leverandøren skal være et lovlig etablert foretak. Documentation requirements: Norske selskaper: Firmaattest. Utenlandske selskaper: Godtgjørelse på at selskapet er registrert i bransjeregister eller foretaksregister som foreskrevet i lovgivningen i det land hvor leverandøren er etablert.",
+                      "sections": null
+                    }
+                  ]
+                },
+                {
+                  "title": "block04011202",
+                  "sectionId": null,
+                  "label": "Kriterium",
+                  "useLabelAsValue": false,
+                  "value": "Other economic or financial requirements",
+                  "sections": [
+                    {
+                      "title": "block0401120201",
+                      "sectionId": null,
+                      "label": "Beskrivelse",
+                      "useLabelAsValue": false,
+                      "value": "Leverandøren skal ha tilstrekkelig økonomisk kapasitet til å gjennomføre oppdraget, og ha en omsetning på minimum 300 millioner NOK i gjennomsnitt de 3 siste regnskapsår. Documentation requirements: Oppdragsgiver vil innhente kredittrating som er basert på siste kjente regnskapstall. Oppdragsgiver forbeholder seg retten til å innhente årsregnskap eller annen dokumentasjon dersom dette er nødvendig for å evaluere kravet. Leverandøren kan fremlegge all dokumentasjon som de mener er relevant for vurderingen av deres økonomiske kapasitet.",
+                      "sections": null
+                    }
+                  ]
+                },
+                {
+                  "title": "block04011202",
+                  "sectionId": null,
+                  "label": "Kriterium",
+                  "useLabelAsValue": false,
+                  "value": "References on specified deliveries",
+                  "sections": [
+                    {
+                      "title": "block0401120201",
+                      "sectionId": null,
+                      "label": "Beskrivelse",
+                      "useLabelAsValue": false,
+                      "value": "Leverandøren skal ha god kompetanse og erfaring fra tilstrekkelig relevante totalentrepriseoppdrag. Herunder må leverandøren ha erfaring med ombygging / rehabilitering av verneverdige bygg. Documentation requirements: Beskrivelse av leverandørens inntil 5 mest relevante oppdrag i løpet av de siste 5 årene. For å sikre nødvendig konkurranse vil dokumentasjon for relevante bygge- og anleggsarbeider som leverandøren har utført for inntil 10 år siden, også bli tatt i betraktning. Beskrivelsen må inkludere angivelse av oppdragets verdi, tidspunkt, entrepriseform, type bygg, evt. vernestatus og byggherre. Det er leverandørens ansvar å dokumentere relevans gjennom beskrivelsen. Oppdragsgiver forbeholder seg retten til å kontrollere oppgitte referanser.",
+                      "sections": null
+                    }
+                  ]
+                },
+                {
+                  "title": "block04011202",
+                  "sectionId": null,
+                  "label": "Kriterium",
+                  "useLabelAsValue": false,
+                  "value": "Measures for ensuring quality",
+                  "sections": [
+                    {
+                      "title": "block0401120201",
+                      "sectionId": null,
+                      "label": "Beskrivelse",
+                      "useLabelAsValue": false,
+                      "value": "Leverandøren skal være egnet til å oppfylle kontraktskrav til aktsomhetsvurderinger for ansvarlig næringsliv, jf. kontrakt pkt. B.5. Med dette menes at leverandøren har implementert tiltak og systemer som brukes i Leverandørens arbeid for å ivareta grunnleggende menneskerettigheter og anstendig arbeidsforhold, samt hindre miljøødeleggelser og korrupsjon. NB! Kravene går lengre enn åpenhetsloven. Documentation requirements: Leverandørens utfyllelse av svarskjema for aktsomhetsvurderinger, konkurransegrunnlagets vedlegg 3 - svarskjema - Aktsomhetsvurderinger. Følgende dokumentasjon skal vedlegges svarskjema og kan leveres på engelsk: i. Formelle policy/retningslinjer som omfatter en forpliktelse om å etterleve krav til et ansvarlig næringsliv. ii. Formelle policy/retningslinjer for ansvarlighet for underleverandører/ leverandørkjeden, (Supplier Code of Conduct). Dette skal kun leveres hvis det benyttes underleverandører. iii. Beskrivelser av Leverandørens prosesser og rutiner for hvordan virksomheten jobber med aktsomhetsvurderinger. iv. Beskrivelse av hvordan Leverandøren vil innhente og vedlikeholde oversikt over opprinnelsesland og produksjonssteder for varene Leverandøren tilbyr. Dette skal kun leveres hvis anskaffelsen omfatter varer.",
+                      "sections": null
+                    }
+                  ]
+                },
+                {
+                  "title": "block04011202",
+                  "sectionId": null,
+                  "label": "Kriterium",
+                  "useLabelAsValue": false,
+                  "value": "Measures for ensuring quality",
+                  "sections": [
+                    {
+                      "title": "block0401120201",
+                      "sectionId": null,
+                      "label": "Beskrivelse",
+                      "useLabelAsValue": false,
+                      "value": "Leverandøren skal ha et tilfredsstillende kvalitetssikringssystem. Documentation requirements: Leverandørens beskrivelse av kvalitetssikringssystemet. eller Attest for leverandørens kvalitetssikringssystem utstedt av uavhengige organer som bekrefter at leverandøren oppfyller visse kvalitetssikringsstandarder, f.eks. ISO 9001:2015",
+                      "sections": null
+                    }
+                  ]
+                },
+                {
+                  "title": "block04011202",
+                  "sectionId": null,
+                  "label": "Kriterium",
+                  "useLabelAsValue": false,
+                  "value": "Environmental management measures",
+                  "sections": [
+                    {
+                      "title": "block0401120201",
+                      "sectionId": null,
+                      "label": "Beskrivelse",
+                      "useLabelAsValue": false,
+                      "value": "Leverandøren skal ha tilfredsstillende miljøledelsessystem. Documentation requirements: Leverandørens beskrivelse av miljøledelsessystemet. eller Attest for leverandørens miljøledelsessystem eller miljøledelsesstandarder utstedt av uavhengige organer, .eks. ISO 14001, Miljøfyrtårn, EMAS.",
+                      "sections": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "block040113",
+              "sectionId": "5.1.10",
+              "label": "Tildelingskriterier",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block04011301",
+                  "sectionId": null,
+                  "label": "Kriterium",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": [
+                    {
+                      "title": "block0401130101",
+                      "sectionId": null,
+                      "label": "Type",
+                      "useLabelAsValue": false,
+                      "value": "Pris",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401130102",
+                      "sectionId": null,
+                      "label": "Navn",
+                      "useLabelAsValue": false,
+                      "value": "",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401130103",
+                      "sectionId": null,
+                      "label": "Beskrivelse",
+                      "useLabelAsValue": false,
+                      "value": "Pris",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401130104",
+                      "sectionId": null,
+                      "label": "Category of award threshold criterion",
+                      "useLabelAsValue": false,
+                      "value": "Vekt (prosent, presis)",
+                      "sections": [
+                        {
+                          "title": "block040113010401",
+                          "sectionId": null,
+                          "label": "Tildelingskriterium - tallverdi",
+                          "useLabelAsValue": false,
+                          "value": "65",
+                          "sections": null
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "block04011301",
+                  "sectionId": null,
+                  "label": "Kriterium",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": [
+                    {
+                      "title": "block0401130101",
+                      "sectionId": null,
+                      "label": "Type",
+                      "useLabelAsValue": false,
+                      "value": "Kvalitet",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401130102",
+                      "sectionId": null,
+                      "label": "Navn",
+                      "useLabelAsValue": false,
+                      "value": "",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401130103",
+                      "sectionId": null,
+                      "label": "Beskrivelse",
+                      "useLabelAsValue": false,
+                      "value": "Tilbudt personells relevante kompetanse og erfaring",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401130104",
+                      "sectionId": null,
+                      "label": "Category of award threshold criterion",
+                      "useLabelAsValue": false,
+                      "value": "Vekt (prosent, presis)",
+                      "sections": [
+                        {
+                          "title": "block040113010401",
+                          "sectionId": null,
+                          "label": "Tildelingskriterium - tallverdi",
+                          "useLabelAsValue": false,
+                          "value": "15",
+                          "sections": null
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "block04011301",
+                  "sectionId": null,
+                  "label": "Kriterium",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": [
+                    {
+                      "title": "block0401130101",
+                      "sectionId": null,
+                      "label": "Type",
+                      "useLabelAsValue": false,
+                      "value": "Kvalitet",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401130102",
+                      "sectionId": null,
+                      "label": "Navn",
+                      "useLabelAsValue": false,
+                      "value": "",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401130103",
+                      "sectionId": null,
+                      "label": "Beskrivelse",
+                      "useLabelAsValue": false,
+                      "value": "Oppdragsforståelse",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401130104",
+                      "sectionId": null,
+                      "label": "Category of award threshold criterion",
+                      "useLabelAsValue": false,
+                      "value": "Vekt (prosent, presis)",
+                      "sections": [
+                        {
+                          "title": "block040113010401",
+                          "sectionId": null,
+                          "label": "Tildelingskriterium - tallverdi",
+                          "useLabelAsValue": false,
+                          "value": "10",
+                          "sections": null
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "block04011301",
+                  "sectionId": null,
+                  "label": "Kriterium",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": [
+                    {
+                      "title": "block0401130101",
+                      "sectionId": null,
+                      "label": "Type",
+                      "useLabelAsValue": false,
+                      "value": "Kvalitet – klima- og miljøkriterium",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401130102",
+                      "sectionId": null,
+                      "label": "Navn",
+                      "useLabelAsValue": false,
+                      "value": "",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401130103",
+                      "sectionId": null,
+                      "label": "Beskrivelse",
+                      "useLabelAsValue": false,
+                      "value": "Miljø Materialbruk 1. Reduksjon av klimagassutslipp knyttet til materialer 2. Ombruk av byggematerialer",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401130104",
+                      "sectionId": null,
+                      "label": "Category of award threshold criterion",
+                      "useLabelAsValue": false,
+                      "value": "Vekt (prosent, presis)",
+                      "sections": [
+                        {
+                          "title": "block040113010401",
+                          "sectionId": null,
+                          "label": "Tildelingskriterium - tallverdi",
+                          "useLabelAsValue": false,
+                          "value": "10",
+                          "sections": null
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "block04011301",
+                  "sectionId": null,
+                  "label": "Kriterium",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": [
+                    {
+                      "title": "block0401130101",
+                      "sectionId": null,
+                      "label": "Type",
+                      "useLabelAsValue": false,
+                      "value": "Kvalitet – klima- og miljøkrav i kravspesifikasjonen (begrunnes under)",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401130102",
+                      "sectionId": null,
+                      "label": "Navn",
+                      "useLabelAsValue": false,
+                      "value": "",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401130103",
+                      "sectionId": null,
+                      "label": "Beskrivelse",
+                      "useLabelAsValue": false,
+                      "value": "I denne anskaffelsen blir ikke miljø vektet som et tildelingskriterium med 30%. Det er stilt strenge minimumskrav til miljø i konkurransegrunnlagets vedlegg, hvor miljøtiltak er beskrevet i prosjektspesifikk teknisk kravspesifikasjon og miljøoppfølgingsplanen (MOP). Dette gjelder blant annet krav til: • Utslippsfri byggeplass • Transport med utslippsfrie kjøretøy eller kjøretøy på biogass • Passivhus for nybygg, samt spesifikke krav til energireduksjon for rehabiliterte bygninger • Ombruk av byggematerialer Det er videre stilt egne krav til byggavfallsminimering, plastreduksjon og reduksjon av massetransport i miljøoppfølgingsplanen. Fra kravspesifikasjonen med vedlegg framgår det at arealer er planlagt på en arealeffektiv måte som er tilpasset oppdragsgivers behov. De samlede kravene retter seg direkte mot utslipp og ressursbruk i gjennomføringen, og gir derfor større og mer sikker klima- og miljøeffekt enn å benytte miljø som tildelingskriterium. Anskaffelsesforskriften § 7-9 (4) kommer derfor til anvendelse. Selv om unntaket i anskaffelsesforskriften § 7-9 (4) kommer til anvendelse har oppdragsgiver likevel valgt å oppstille miljø som tildelingskriterium i denne anskaffelsen. Dette gjøres for å oppnå ytterlige reduksjoner av miljø- og klimabelastning innenfor det som er identifisert og vurdert som egnede tema, se tildelingskriteriene nedenfor.",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401130104",
+                      "sectionId": null,
+                      "label": "Category of award threshold criterion",
+                      "useLabelAsValue": false,
+                      "value": "Vekt (prosent, presis)",
+                      "sections": [
+                        {
+                          "title": "block040113010401",
+                          "sectionId": null,
+                          "label": "Tildelingskriterium - tallverdi",
+                          "useLabelAsValue": false,
+                          "value": "0",
+                          "sections": null
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "block04011302",
+                  "sectionId": null,
+                  "label": "Beskrivelse av metoden som skal benyttes dersom vektingen ikke kan uttrykkes ved kriterier",
+                  "useLabelAsValue": false,
+                  "value": "",
+                  "sections": null
+                },
+                {
+                  "title": "block04011303",
+                  "sectionId": null,
+                  "label": "Begrunnelse for ikke å angi vektingen av tildelingskriteriene",
+                  "useLabelAsValue": false,
+                  "value": "",
+                  "sections": null
+                }
+              ]
+            },
+            {
+              "title": "block040114",
+              "sectionId": "5.1.11",
+              "label": "Anskaffelsesdokumenter",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block04011401",
+                  "sectionId": null,
+                  "label": "Tilgangen til enkelte anskaffelsesdokumenter er begrenset",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": null
+                },
+                {
+                  "title": "block04011406",
+                  "sectionId": null,
+                  "label": "Informasjon om begrensede dokumenter er tilgjengelig på",
+                  "useLabelAsValue": false,
+                  "value": "https://app.artifik.no/procurements/4592",
+                  "sections": null
+                },
+                {
+                  "title": "block04011408",
+                  "sectionId": null,
+                  "label": "Ad hoc-kommunikasjonskanal",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": [
+                    {
+                      "title": "block0401140801",
+                      "sectionId": null,
+                      "label": "Navn",
+                      "useLabelAsValue": false,
+                      "value": "e-Tendering",
+                      "sections": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "block040115",
+              "sectionId": "5.1.12",
+              "label": "Vilkår for anskaffelsen",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block04011503",
+                  "sectionId": null,
+                  "label": "Vilkår for innlevering",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": [
+                    {
+                      "title": "block0401150301",
+                      "sectionId": null,
+                      "label": "Elektronisk innlevering",
+                      "useLabelAsValue": false,
+                      "value": "Obligatorisk",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401150302",
+                      "sectionId": null,
+                      "label": "Adresse for innlevering",
+                      "useLabelAsValue": false,
+                      "value": "https://app.artifik.no/procurements/4592",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401150305",
+                      "sectionId": null,
+                      "label": "Språk som anbud eller forespørsler om å delta kan sendes inn på",
+                      "useLabelAsValue": false,
+                      "value": "English, norsk",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401150306",
+                      "sectionId": null,
+                      "label": "Elektronisk katalog",
+                      "useLabelAsValue": false,
+                      "value": "Ikke tillatt",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401150312",
+                      "sectionId": null,
+                      "label": "Frist for mottak av tilbud",
+                      "useLabelAsValue": false,
+                      "value": "28.05.2026 12:00",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401150313",
+                      "sectionId": null,
+                      "label": "Frist til anbudet må være gyldig, Måned",
+                      "useLabelAsValue": false,
+                      "value": "3",
+                      "sections": null
+                    }
+                  ]
+                },
+                {
+                  "title": "block04011506",
+                  "sectionId": null,
+                  "label": "Vilkår for kontrakt",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": [
+                    {
+                      "title": "block0401150601",
+                      "sectionId": null,
+                      "label": "Gjennomføringen av kontrakten skal skje innenfor rammen av programmer for vernet sysselsetting",
+                      "useLabelAsValue": false,
+                      "value": "Nei",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401150602",
+                      "sectionId": null,
+                      "label": "Betingelser knyttet til utførelsen av kontrakten",
+                      "useLabelAsValue": false,
+                      "value": "N/A",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401150605",
+                      "sectionId": null,
+                      "label": "eFaktura",
+                      "useLabelAsValue": false,
+                      "value": "Obligatorisk",
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401150606",
+                      "sectionId": null,
+                      "label": "Elektronisk bestilling vil bli brukt, Sann",
+                      "useLabelAsValue": false,
+                      "value": null,
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401150607",
+                      "sectionId": null,
+                      "label": "Elektronisk betaling vil bli brukt, Sann",
+                      "useLabelAsValue": false,
+                      "value": null,
+                      "sections": null
+                    },
+                    {
+                      "title": "block0401150609",
+                      "sectionId": null,
+                      "label": "Finansiell ordning",
+                      "useLabelAsValue": false,
+                      "value": "N/A",
+                      "sections": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "block040116",
+              "sectionId": "5.1.15",
+              "label": "Teknikker",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block04011601",
+                  "sectionId": null,
+                  "label": "Rammeavtale",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": [
+                    {
+                      "title": "block0401160101",
+                      "sectionId": null,
+                      "label": "Ingen/nei",
+                      "useLabelAsValue": true,
+                      "value": null,
+                      "sections": null
+                    }
+                  ]
+                },
+                {
+                  "title": "block04011602",
+                  "sectionId": null,
+                  "label": "Informasjon om den dynamiske innkjøpsordningen",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": [
+                    {
+                      "title": "block0401160201",
+                      "sectionId": null,
+                      "label": "Ingen",
+                      "useLabelAsValue": true,
+                      "value": null,
+                      "sections": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "block040117",
+              "sectionId": "5.1.16",
+              "label": "Nærmere informasjon, mekling og revisjon",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block04011702",
+                  "sectionId": null,
+                  "label": "Virksomhet som gjennomfører klagebehandling",
+                  "useLabelAsValue": false,
+                  "value": "Oslo tingrett -",
+                  "sections": null
+                },
+                {
+                  "title": "block04011707",
+                  "sectionId": null,
+                  "label": "Virksomhet som gir tilleggsinformasjon om anskaffelsesprosedyren",
+                  "useLabelAsValue": false,
+                  "value": "Oslo kommune v/ Oslobygg KF -",
+                  "sections": null
+                },
+                {
+                  "title": "block04011709",
+                  "sectionId": null,
+                  "label": "Virksomhet som gir mer informasjon om klagebehandling",
+                  "useLabelAsValue": false,
+                  "value": "Oslo kommune v/ Oslobygg KF -",
+                  "sections": null
+                },
+                {
+                  "title": "block04011710",
+                  "sectionId": null,
+                  "label": "Virksomhet som mottar forespørsler om å delta",
+                  "useLabelAsValue": false,
+                  "value": "Artifik AS -",
+                  "sections": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "block05",
+      "sectionId": "8",
+      "label": "Virksomheter",
+      "useLabelAsValue": false,
+      "value": null,
+      "sections": [
+        {
+          "title": "block0501",
+          "sectionId": "8.1",
+          "label": null,
+          "useLabelAsValue": false,
+          "value": "ORG-0001",
+          "sections": [
+            {
+              "title": "block050101",
+              "sectionId": null,
+              "label": "Offisielt navn",
+              "useLabelAsValue": false,
+              "value": "Oslo kommune v/ Oslobygg KF",
+              "sections": null
+            },
+            {
+              "title": "block050102",
+              "sectionId": null,
+              "label": "Organisasjonsnummer",
+              "useLabelAsValue": false,
+              "value": "924599545",
+              "sections": null
+            },
+            {
+              "title": "block050104",
+              "sectionId": null,
+              "label": "Postadresse",
+              "useLabelAsValue": false,
+              "value": "Postboks 6391 Etterstad  ",
+              "sections": null
+            },
+            {
+              "title": "block050105",
+              "sectionId": null,
+              "label": "By",
+              "useLabelAsValue": false,
+              "value": "Oslo",
+              "sections": null
+            },
+            {
+              "title": "block050106",
+              "sectionId": null,
+              "label": "Postnummer",
+              "useLabelAsValue": false,
+              "value": "0604",
+              "sections": null
+            },
+            {
+              "title": "block050107",
+              "sectionId": null,
+              "label": "Underenhet i land",
+              "useLabelAsValue": false,
+              "value": "Oslo (NO081)",
+              "sections": null
+            },
+            {
+              "title": "block050108",
+              "sectionId": null,
+              "label": "Land",
+              "useLabelAsValue": false,
+              "value": "Norge",
+              "sections": null
+            },
+            {
+              "title": "block050109",
+              "sectionId": null,
+              "label": "Kontaktpunkt",
+              "useLabelAsValue": false,
+              "value": "Ole Eliesen",
+              "sections": null
+            },
+            {
+              "title": "block050110",
+              "sectionId": null,
+              "label": "E-post",
+              "useLabelAsValue": false,
+              "value": "postmottak@obf.oslo.kommune.no",
+              "sections": null
+            },
+            {
+              "title": "block050111",
+              "sectionId": null,
+              "label": "Telefon",
+              "useLabelAsValue": false,
+              "value": "+47 21802180",
+              "sections": null
+            },
+            {
+              "title": "block050113",
+              "sectionId": null,
+              "label": "Internett-adresse",
+              "useLabelAsValue": false,
+              "value": "https://www.oslo.kommune.no/etater-foretak-og-ombud/oslobygg-kf/",
+              "sections": null
+            },
+            {
+              "title": "block050115",
+              "sectionId": null,
+              "label": "Kjøper profil",
+              "useLabelAsValue": false,
+              "value": "https://www.oslo.kommune.no/etater-foretak-og-ombud/oslobygg-kf/",
+              "sections": null
+            },
+            {
+              "title": "block050117",
+              "sectionId": null,
+              "label": "Rollene til denne virksomheten",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block05011701",
+                  "sectionId": null,
+                  "label": "Kjøper",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": null
+                },
+                {
+                  "title": "block05011704",
+                  "sectionId": null,
+                  "label": "Virksomhet som gir tilleggsinformasjon om anskaffelsesprosedyren",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": null
+                },
+                {
+                  "title": "block05011709",
+                  "sectionId": null,
+                  "label": "Virksomhet som gir mer informasjon om klagebehandling",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "block0501",
+          "sectionId": "8.1",
+          "label": null,
+          "useLabelAsValue": false,
+          "value": "ORG-0002",
+          "sections": [
+            {
+              "title": "block050101",
+              "sectionId": null,
+              "label": "Offisielt navn",
+              "useLabelAsValue": false,
+              "value": "Oslo tingrett",
+              "sections": null
+            },
+            {
+              "title": "block050102",
+              "sectionId": null,
+              "label": "Organisasjonsnummer",
+              "useLabelAsValue": false,
+              "value": "926725939",
+              "sections": null
+            },
+            {
+              "title": "block050104",
+              "sectionId": null,
+              "label": "Postadresse",
+              "useLabelAsValue": false,
+              "value": "Postboks 2106 Vika  ",
+              "sections": null
+            },
+            {
+              "title": "block050105",
+              "sectionId": null,
+              "label": "By",
+              "useLabelAsValue": false,
+              "value": "Oslo",
+              "sections": null
+            },
+            {
+              "title": "block050106",
+              "sectionId": null,
+              "label": "Postnummer",
+              "useLabelAsValue": false,
+              "value": "0125",
+              "sections": null
+            },
+            {
+              "title": "block050107",
+              "sectionId": null,
+              "label": "Underenhet i land",
+              "useLabelAsValue": false,
+              "value": "Oslo (NO081)",
+              "sections": null
+            },
+            {
+              "title": "block050108",
+              "sectionId": null,
+              "label": "Land",
+              "useLabelAsValue": false,
+              "value": "Norge",
+              "sections": null
+            },
+            {
+              "title": "block050110",
+              "sectionId": null,
+              "label": "E-post",
+              "useLabelAsValue": false,
+              "value": "oslo.tingrett@domstol.no",
+              "sections": null
+            },
+            {
+              "title": "block050111",
+              "sectionId": null,
+              "label": "Telefon",
+              "useLabelAsValue": false,
+              "value": "+47 22035200",
+              "sections": null
+            },
+            {
+              "title": "block050113",
+              "sectionId": null,
+              "label": "Internett-adresse",
+              "useLabelAsValue": false,
+              "value": "https://www.domstol.no/no/domstoler/tingrett/oslo-tingrett/",
+              "sections": null
+            },
+            {
+              "title": "block050117",
+              "sectionId": null,
+              "label": "Rollene til denne virksomheten",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block05011708",
+                  "sectionId": null,
+                  "label": "Virksomhet som gjennomfører klagebehandling",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "block0501",
+          "sectionId": "8.1",
+          "label": null,
+          "useLabelAsValue": false,
+          "value": "ORG-0003",
+          "sections": [
+            {
+              "title": "block050101",
+              "sectionId": null,
+              "label": "Offisielt navn",
+              "useLabelAsValue": false,
+              "value": "Artifik AS",
+              "sections": null
+            },
+            {
+              "title": "block050102",
+              "sectionId": null,
+              "label": "Organisasjonsnummer",
+              "useLabelAsValue": false,
+              "value": "925364967",
+              "sections": null
+            },
+            {
+              "title": "block050104",
+              "sectionId": null,
+              "label": "Postadresse",
+              "useLabelAsValue": false,
+              "value": "Stortingsgata 12  ",
+              "sections": null
+            },
+            {
+              "title": "block050105",
+              "sectionId": null,
+              "label": "By",
+              "useLabelAsValue": false,
+              "value": "Oslo",
+              "sections": null
+            },
+            {
+              "title": "block050106",
+              "sectionId": null,
+              "label": "Postnummer",
+              "useLabelAsValue": false,
+              "value": "0161",
+              "sections": null
+            },
+            {
+              "title": "block050107",
+              "sectionId": null,
+              "label": "Underenhet i land",
+              "useLabelAsValue": false,
+              "value": "Oslo (NO081)",
+              "sections": null
+            },
+            {
+              "title": "block050108",
+              "sectionId": null,
+              "label": "Land",
+              "useLabelAsValue": false,
+              "value": "Norge",
+              "sections": null
+            },
+            {
+              "title": "block050110",
+              "sectionId": null,
+              "label": "E-post",
+              "useLabelAsValue": false,
+              "value": "support@artifik.no",
+              "sections": null
+            },
+            {
+              "title": "block050113",
+              "sectionId": null,
+              "label": "Internett-adresse",
+              "useLabelAsValue": false,
+              "value": "https://artifik.no",
+              "sections": null
+            },
+            {
+              "title": "block050117",
+              "sectionId": null,
+              "label": "Rollene til denne virksomheten",
+              "useLabelAsValue": false,
+              "value": null,
+              "sections": [
+                {
+                  "title": "block05011702",
+                  "sectionId": null,
+                  "label": "Leverandør av innkjøpstjenester",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": null
+                },
+                {
+                  "title": "block05011706",
+                  "sectionId": null,
+                  "label": "Virksomhet som mottar forespørsler om å delta",
+                  "useLabelAsValue": false,
+                  "value": null,
+                  "sections": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "block06",
+      "sectionId": "10",
+      "label": "Endring",
+      "useLabelAsValue": false,
+      "value": null,
+      "sections": [
+        {
+          "title": "block0601",
+          "sectionId": null,
+          "label": "Versjon av forrige varsel endres",
+          "useLabelAsValue": false,
+          "value": "19d3977a-1263-4702-92c9-789cf249efc4-01",
+          "sections": null
+        },
+        {
+          "title": "block0602",
+          "sectionId": null,
+          "label": "Hovedårsak til endring",
+          "useLabelAsValue": false,
+          "value": "Korreksjon kjøper",
+          "sections": null
+        },
+        {
+          "title": "block0603",
+          "sectionId": null,
+          "label": "Beskrivelse",
+          "useLabelAsValue": false,
+          "value": "Frist for innlevering av tilbud er endret til 28.05.2026 kl.12:00 Frist for å stille spørsmål er endret til 18.05.2026 kl.23:59 Vedståelsesfristen er endret til 26.08.2026",
+          "sections": null
+        },
+        {
+          "title": "block0604",
+          "sectionId": "10.1",
+          "label": "Endring",
+          "useLabelAsValue": false,
+          "value": null,
+          "sections": [
+            {
+              "title": "block060401",
+              "sectionId": null,
+              "label": "Seksjonsidentifikator",
+              "useLabelAsValue": false,
+              "value": "LOT-0001",
+              "sections": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "block07",
+      "sectionId": null,
+      "label": "Kunngjøringsinformasjon",
+      "useLabelAsValue": false,
+      "value": null,
+      "sections": [
+        {
+          "title": "block0701",
+          "sectionId": null,
+          "label": "Varselidentifikator/-versjon",
+          "useLabelAsValue": false,
+          "value": "d54f165b-f145-41ed-b84d-3c678157130c 01",
+          "sections": null
+        },
+        {
+          "title": "block0702",
+          "sectionId": null,
+          "label": "Type skjema",
+          "useLabelAsValue": false,
+          "value": "Konkurranse",
+          "sections": null
+        },
+        {
+          "title": "block0703",
+          "sectionId": null,
+          "label": "Type varsel",
+          "useLabelAsValue": false,
+          "value": "Melding om kontrakt eller konsesjon – standardregime",
+          "sections": null
+        },
+        {
+          "title": "block0704",
+          "sectionId": null,
+          "label": "Varsel utsendelsesdato",
+          "useLabelAsValue": false,
+          "value": "01.05.2026 17:33",
+          "sections": null
+        },
+        {
+          "title": "block0706",
+          "sectionId": null,
+          "label": "Språk der denne kunngjøringen er offisielt tilgjengelig",
+          "useLabelAsValue": false,
+          "value": "English, norsk",
+          "sections": null
+        }
+      ]
+    }
+  ],
+  "awardedNames": [],
+  "changeNotices": [
+    {
+      "id": "2026-107918",
+      "changedNoticeId": "19d3977a-1263-4702-92c9-789cf249efc4-01",
+      "issueDate": "2026-05-01T15:33:10Z",
+      "selectedNotice": true,
+      "eformId": "d54f165b-f145-41ed-b84d-3c678157130c"
+    },
+    {
+      "id": "2026-105551",
+      "changedNoticeId": null,
+      "issueDate": "2026-03-19T18:11:02Z",
+      "selectedNotice": false,
+      "eformId": "19d3977a-1263-4702-92c9-789cf249efc4"
+    }
+  ],
+  "limitedDataFlag": false,
+  "publicationDate": "2026-05-01",
+  "tedId": null,
+  "procurementTimeline": [
+    {
+      "id": "2026-105551",
+      "allType": [
+        "ANNOUNCEMENT_OF_COMPETITION",
+        "COMPETITION"
+      ],
+      "publicationDate": "2026-03-23",
+      "selectedNotice": false
+    },
+    {
+      "id": "2026-107918",
+      "allType": [
+        "ANNOUNCEMENT_OF_COMPETITION",
+        "COMPETITION"
+      ],
+      "publicationDate": "2026-05-01",
+      "selectedNotice": true
+    }
+  ],
+  "procurementStrategicLabels": [
+    "ENVIRONMENT_PROCUREMENT"
+  ]
+}
