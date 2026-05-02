@@ -1,3 +1,7 @@
+import { readFile } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
+
 export type CpvEntry = {
   code: string;
   label_en: string;
@@ -79,4 +83,13 @@ export function createCpvService(entries: CpvEntry[]): CpvService {
       return entries;
     },
   };
+}
+
+const here = dirname(fileURLToPath(import.meta.url));
+
+export async function loadBundledCpv(): Promise<CpvService> {
+  const path = join(here, "..", "..", "data", "cpv-2008.json");
+  const raw = await readFile(path, "utf8");
+  const entries = JSON.parse(raw) as CpvEntry[];
+  return createCpvService(entries);
 }

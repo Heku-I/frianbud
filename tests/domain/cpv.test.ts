@@ -77,3 +77,11 @@ describe("CpvService.expand", () => {
     expect(descendants).toEqual([]);
   });
 });
+
+describe("loadBundledCpv", () => {
+  it("loads the real bundled JSON and returns >1000 entries", async () => {
+    const { loadBundledCpv } = await import("../../src/domain/cpv.js");
+    const cpv = await loadBundledCpv();
+    expect(cpv.all().length).toBeGreaterThan(1000);
+  });
+});
