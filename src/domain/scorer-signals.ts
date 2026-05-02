@@ -30,3 +30,16 @@ export const cpvOverlapSignal: Signal = (tender, profile) => {
     detail: `${Math.round(fraction * 100)}% CPV match`,
   };
 };
+
+export const regionMatchSignal: Signal = (tender, profile) => {
+  const set = new Set(profile.regions);
+  const matched = tender.regions.filter((r) => set.has(r));
+  if (matched.length > 0) {
+    return {
+      signal: "region_match",
+      contribution: 20,
+      detail: `region ${matched.join(", ")} in profile`,
+    };
+  }
+  return { signal: "region_match", contribution: 0, detail: "no region overlap" };
+};

@@ -1,6 +1,9 @@
 import { describe, it, expect } from "vitest";
 import type { Tender, Profile } from "../../src/types.js";
-import { cpvOverlapSignal } from "../../src/domain/scorer-signals.js";
+import {
+  cpvOverlapSignal,
+  regionMatchSignal,
+} from "../../src/domain/scorer-signals.js";
 
 const baseProfile: Profile = {
   schemaVersion: 1,
@@ -75,5 +78,31 @@ describe("cpvOverlapSignal", () => {
     const a = cpvOverlapSignal(tenderPrimary, profile);
     const b = cpvOverlapSignal(tenderSecondary, profile);
     expect(a.contribution).toBeGreaterThan(b.contribution);
+  });
+});
+
+describe("regionMatchSignal", () => {
+  it("scores 20 when regions intersect", () => {
+    const r = regionMatchSignal(
+      { ...baseTender, regions: ["NO081"] },
+      { ...baseProfile, regions: ["NO081", "NO091"] }
+    );
+    expect(r.contribution).toBe(20);
+  });
+
+  it("scores 0 with no intersection", () => {
+    const r = regionMatchSignal(
+      { ...baseTender, regions: ["NO091"] },
+      { ...baseProfile, regions: ["NO081"] }
+    );
+    expect(r.contribution).toBe(0);
+  });
+
+  it("scores 0 when tender has no regions", () => {
+    const r = regionMatchSignal(
+      { ...baseTender, regions: [] },
+      baseProfile
+    );
+    expect(r.contribution).toBe(0);
   });
 });
