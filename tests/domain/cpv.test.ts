@@ -84,4 +84,11 @@ describe("loadBundledCpv", () => {
     const cpv = await loadBundledCpv();
     expect(cpv.all().length).toBeGreaterThan(1000);
   });
+
+  it("includes Norwegian labels for common codes", async () => {
+    const { loadBundledCpv } = await import("../../src/domain/cpv.js");
+    const cpv = await loadBundledCpv();
+    expect(cpv.lookup("90910000-9")?.label_no).toBeDefined();
+    expect(cpv.lookup("72000000-5")?.label_no).toBeDefined();
+  });
 });
