@@ -17,6 +17,7 @@ import { createProfileService } from "./domain/profile.js";
 import { createSearchService } from "./domain/search.js";
 import { createTedClient } from "./sources/ted.js";
 import { createDoffinClient } from "./sources/doffin.js";
+import { createDoffinPublicClient } from "./sources/doffin-public.js";
 import { createDoffinHealthGate } from "./sources/doffin-health-gate.js";
 import { createBrregClient } from "./sources/brreg.js";
 import { tools as toolList } from "./tools/index.js";
@@ -162,7 +163,19 @@ async function main(): Promise<void> {
   logger.info("cpv_loaded", { entries: cpv.all().length });
 
   const ted = createTedClient();
-  const doffinClient = createDoffinClient();
+
+  // Doffin client: prefer the official Public API (api.doffin.no/public/v2/search)
+  // when a subscription key is configured. The official API gives us
+  // server-side filters for status/CPV/location/date plus structured
+  // lot-level winner data. Fall back to the unofficial SPA backend when
+  // no key is provided so existing setups keep working.
+  const doffinApiKey = process.env.FRIANBUD_DOFFIN_API_KEY;
+  const doffinClient = doffinApiKey
+    ? createDoffinPublicClient({ apiKey: doffinApiKey })
+    : createDoffinClient();
+  logger.info("doffin_client", {
+    backend: doffinApiKey ? "public-api" : "spa-fallback",
+  });
   const doffin = await createDoffinHealthGate(doffinClient);
   logger.info("doffin_health", { enabled: doffin.isEnabled() });
   const brreg = createBrregClient();
