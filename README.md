@@ -95,10 +95,14 @@ flowchart LR
 ## Known limitations
 
 - **Doffin is unofficial.** If Doffin changes its internal endpoints, the client may temporarily return zero results. The server detects this via a health check and falls back to TED-only with a clear warning. Disable Doffin entirely with `FRIANBUD_DOFFIN=off`.
-- **TED only covers above-threshold tenders.** For Norwegian SMEs competing for smaller contracts, Doffin coverage is what matters. Help us keep it healthy (see Contributing).
+- **Doffin's API has no server-side filters beyond free-text search.** CPV codes, status, and date filters in the request body are silently ignored — Doffin's frontend filters in the browser after the call. We work around this by auto-deriving Norwegian keywords from CPV labels (e.g., "cleaning" CPVs become a "Rengjøring tildelt" search), and post-filtering after detail enrichment. Coverage on narrow CPV queries is therefore weaker than TED's; for sub-threshold contracts that exist only on Doffin, the agent may miss some.
+- **Doffin caps results at 1,000 per query.** Even with optimal filters, you can't page past the first 1k matching hits.
+- **TED only covers above-threshold tenders** (~1.4M NOK and up). For Norwegian SMEs competing for smaller contracts, Doffin coverage is what matters. Help us keep it healthy (see Contributing).
+- **NUTS-3 region tagging on TED can be misleading.** TED records `place-of-performance` based on what the buyer publishes, which is often the buyer's registered office rather than the actual operating region (e.g., "Akershus kollektivterminaler" gets tagged NO081/Oslo because their HQ is in Oslo). Fixing this requires cross-referencing buyer org numbers against Brønnøysund — on the v0.2 roadmap.
 - **Scoring is deliberately simple in v1.** Pure rule-based, deterministic, transparent. Smarter scoring (text similarity, embeddings) is on the roadmap but won't replace the rule-based path.
 - **No write actions.** This server is read-only. It does not submit bids or modify any external state.
 - **Norwegian CPV labels: 99.5% coverage.** A handful of obscure stationary categories don't have Doffin translations yet. PRs welcome.
+- **`get_tender` returns the unified `Tender` plus the source's raw payload, but the agent should expect some fields to be sparse.** TED leaves `winner-name` empty on some CAN notices (no winner declared) and the `description` field falls back to title when none of the eForms description-* variants are populated. The `raw` field is always there for agents that need the full eForms structure.
 
 ## Contributing
 
