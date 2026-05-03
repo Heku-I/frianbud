@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "engines": { "node": ">=20" },
-  "bin": { "frianbud": "./dist/index.js" },
+  "bin": { "frianbud": "dist/index.js" },
   "main": "./dist/index.js",
   "exports": "./dist/index.js",
   "files": ["dist", "data", "README.md", "LICENSE"],
