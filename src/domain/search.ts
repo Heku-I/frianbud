@@ -7,6 +7,11 @@ import { scoreTender } from "./scorer.js";
 
 export type SearchOptions = {
   query?: string;
+  // Doffin-specific free-text search hint. When set, takes precedence over
+  // `query` for Doffin's API. TED's expert query DSL doesn't accept free
+  // text well, so callers needing Doffin-only keyword bias (e.g.,
+  // CPV-derived Norwegian labels) use this without breaking TED.
+  doffinQuery?: string;
   cpvCodes?: string[];
   regions?: string[];
   valueMin?: number;
@@ -45,11 +50,12 @@ export function createSearchService(deps: {
         ...(opts.query ? { query: opts.query } : {}),
         ...(opts.limit ? { limit: opts.limit } : {}),
       };
+      const doffinFreeText = opts.doffinQuery ?? opts.query;
       const doffinFilters: DoffinSearchOptions = {
         ...(opts.cpvCodes ? { cpvCodes: opts.cpvCodes } : {}),
         ...(opts.regions ? { regions: opts.regions } : {}),
         ...(opts.deadlineBefore ? { deadlineBefore: opts.deadlineBefore } : {}),
-        ...(opts.query ? { query: opts.query } : {}),
+        ...(doffinFreeText ? { query: doffinFreeText } : {}),
         ...(opts.status ? { status: opts.status } : {}),
         ...(opts.limit ? { limit: opts.limit } : {}),
       };
