@@ -181,5 +181,91 @@ export function normalizeTedNotice(payload: unknown): Tender {
   };
   if (deadlineAt) tender.deadlineAt = deadlineAt;
   if (estimatedValue) tender.estimatedValue = estimatedValue;
+  if (status === "awarded") {
+    const award = extractAward(p, publishedAt);
+    if (award) tender.award = award;
+  }
   return tender;
+}
+
+// Extract winner names + per-winner values + total contract value from a
+// CAN (Contract Award Notice) payload. Multi-lot framework agreements have
+// parallel arrays: winner-name returns each language with an array of names,
+// winner-identifier holds matching org numbers, tender-value holds per-lot
+// bid values. Single-winner contracts return strings or 1-element arrays.
+function extractAward(
+  p: Record<string, unknown>,
+  publishedAt: string,
+): Tender["award"] | undefined {
+  const names = pickWinnerNames(p["winner-name"]);
+  const orgNumbers = arrayOf(p["winner-identifier"]);
+  const values = arrayOf(p["tender-value"]).map((v) => Number(v));
+
+  const winners = names.map((name, i) => {
+    const w: NonNullable<Tender["award"]>["winners"][number] = { name };
+    const og = orgNumbers[i];
+    if (og) w.orgNumber = og;
+    const v = values[i];
+    if (typeof v === "number" && Number.isFinite(v)) w.value = v;
+    return w;
+  });
+
+  const decisionDate = arrayOf(p["winner-decision-date"])[0];
+  const awardedAt = decisionDate
+    ? normalizeIsoDateTime(decisionDate)
+    : publishedAt;
+
+  const totalArr = arrayOf(p["total-value"]).map((v) => Number(v));
+  const totalRaw = totalArr.length > 0 ? totalArr[0] : Number(p["total-value"]);
+  const totalCurArr = arrayOf(p["total-value-cur"]);
+  const totalCur =
+    totalCurArr[0] ?? arrayOf(p["tender-value-cur"])[0];
+
+  if (winners.length === 0 && (totalRaw === undefined || !Number.isFinite(totalRaw))) {
+    return undefined;
+  }
+
+  const award: NonNullable<Tender["award"]> = {
+    winners,
+    awardedAt,
+  };
+  if (typeof totalRaw === "number" && Number.isFinite(totalRaw)) {
+    award.totalValue = totalRaw;
+  }
+  if (typeof totalCur === "string" && totalCur.length === 3) {
+    award.currency = totalCur;
+  }
+  return award;
+}
+
+function pickWinnerNames(field: unknown): string[] {
+  // Single-winner: { eng: "Acme AS" } or { eng: ["Acme AS"] }.
+  // Multi-winner: { eng: ["A AS", "B AS", "C AS"] }.
+  if (!field || typeof field !== "object") return [];
+  const obj = field as Record<string, unknown>;
+  for (const key of ["eng", "nor", "ENG", "NOR"]) {
+    const v = obj[key];
+    if (Array.isArray(v)) {
+      return v.filter((x): x is string => typeof x === "string");
+    }
+    if (typeof v === "string") return [v];
+  }
+  for (const v of Object.values(obj)) {
+    if (Array.isArray(v)) {
+      const arr = v.filter((x): x is string => typeof x === "string");
+      if (arr.length > 0) return arr;
+    }
+    if (typeof v === "string") return [v];
+  }
+  return [];
+}
+
+function arrayOf(field: unknown): string[] {
+  if (Array.isArray(field)) {
+    return field.filter(
+      (x): x is string => typeof x === "string" || typeof x === "number",
+    ).map(String);
+  }
+  if (typeof field === "string" || typeof field === "number") return [String(field)];
+  return [];
 }

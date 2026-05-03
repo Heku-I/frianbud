@@ -143,4 +143,77 @@ describe("normalizeTedNotice", () => {
     });
     expect(t.description).toBe("Just a title");
   });
+
+  it("extracts a single winner with org number and value from a CAN notice", () => {
+    const t = normalizeTedNotice({
+      ...sample,
+      "notice-type": "can-standard",
+      "winner-name": { eng: ["Acme AS"] },
+      "winner-identifier": ["111111111"],
+      "winner-decision-date": ["2025-05-09Z"],
+      "tender-value": ["6780500"],
+      "tender-value-cur": ["NOK"],
+      "total-value": 40000000,
+      "total-value-cur": ["NOK"],
+    });
+    expect(t.status).toBe("awarded");
+    expect(t.award?.winners).toHaveLength(1);
+    expect(t.award?.winners[0]).toEqual({
+      name: "Acme AS",
+      orgNumber: "111111111",
+      value: 6780500,
+    });
+    expect(t.award?.awardedAt).toBe("2025-05-09T00:00:00Z");
+    expect(t.award?.totalValue).toBe(40000000);
+    expect(t.award?.currency).toBe("NOK");
+  });
+
+  it("extracts multi-lot framework winners with parallel arrays", () => {
+    const t = normalizeTedNotice({
+      ...sample,
+      "notice-type": "can-standard",
+      "winner-name": { eng: ["A AS", "B AS", "C AS", "D AS"] },
+      "winner-identifier": ["111", "222", "333", "444"],
+      "tender-value": ["100", "200", "300", "400"],
+      "total-value": 1000,
+      "total-value-cur": ["NOK"],
+    });
+    expect(t.award?.winners).toHaveLength(4);
+    expect(t.award?.winners.map((w) => w.name)).toEqual([
+      "A AS",
+      "B AS",
+      "C AS",
+      "D AS",
+    ]);
+    expect(t.award?.winners.map((w) => w.orgNumber)).toEqual([
+      "111",
+      "222",
+      "333",
+      "444",
+    ]);
+    expect(t.award?.winners.map((w) => w.value)).toEqual([100, 200, 300, 400]);
+  });
+
+  it("populates total-value alone when winner names are absent", () => {
+    const t = normalizeTedNotice({
+      ...sample,
+      "notice-type": "can-standard",
+      "total-value": 70000000,
+      "total-value-cur": ["NOK"],
+    });
+    expect(t.status).toBe("awarded");
+    expect(t.award?.winners).toEqual([]);
+    expect(t.award?.totalValue).toBe(70000000);
+    expect(t.award?.currency).toBe("NOK");
+  });
+
+  it("does not set award block on non-awarded notices", () => {
+    const t = normalizeTedNotice({
+      ...sample,
+      "notice-type": "cn-standard",
+      "winner-name": { eng: ["Should not appear"] },
+    });
+    expect(t.status).toBe("open");
+    expect(t.award).toBeUndefined();
+  });
 });

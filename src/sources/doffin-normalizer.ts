@@ -107,7 +107,7 @@ export function normalizeDoffinDetail(payload: unknown): Tender {
   const awardedNames = asStringArr(p["awardedNames"]);
   if (awardedNames.length > 0) {
     base.award = {
-      winner: awardedNames[0]!,
+      winners: awardedNames.map((name) => ({ name })),
       awardedAt: base.publishedAt,
     };
     base.status = "awarded";

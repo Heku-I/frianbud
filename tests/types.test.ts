@@ -39,14 +39,32 @@ describe("TenderSchema", () => {
     ).toThrow();
   });
 
-  it("accepts an awarded tender with award block", () => {
+  it("accepts an awarded tender with award block (single winner)", () => {
     expect(() =>
       TenderSchema.parse({
         ...valid,
         status: "awarded",
         award: {
-          winner: "Acme AS",
+          winners: [{ name: "Acme AS" }],
           awardedAt: "2025-04-30T00:00:00Z",
+        },
+      })
+    ).not.toThrow();
+  });
+
+  it("accepts a multi-winner award with per-winner values and total", () => {
+    expect(() =>
+      TenderSchema.parse({
+        ...valid,
+        status: "awarded",
+        award: {
+          winners: [
+            { name: "Acme AS", orgNumber: "111111111", value: 1_000_000 },
+            { name: "Beta AS", orgNumber: "222222222", value: 2_000_000 },
+          ],
+          awardedAt: "2025-04-30T00:00:00Z",
+          totalValue: 5_000_000,
+          currency: "NOK",
         },
       })
     ).not.toThrow();

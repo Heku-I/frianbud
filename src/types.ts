@@ -27,10 +27,20 @@ export const TenderSchema = z.object({
   status: z.enum(["open", "closed", "awarded", "cancelled"]),
   award: z
     .object({
-      winner: z.string(),
-      orgNumber: z.string().optional(),
-      value: z.number().optional(),
+      // Multi-lot framework awards regularly have several winners. Keep this
+      // an array even for single-winner contracts (length 1) so consumers
+      // ranking incumbents by frequency get accurate per-firm counts rather
+      // than systematically under-counting under-represented winners.
+      winners: z.array(
+        z.object({
+          name: z.string(),
+          orgNumber: z.string().optional(),
+          value: z.number().optional(),
+        }),
+      ),
       awardedAt: isoDateTime,
+      totalValue: z.number().optional(),
+      currency: z.string().length(3).optional(),
     })
     .optional(),
   raw: z.unknown(),

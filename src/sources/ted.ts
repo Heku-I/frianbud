@@ -51,6 +51,17 @@ const SEARCH_FIELDS = [
   "deadline-receipt-tender-date-lot",
   "estimated-value-glo",
   "estimated-value-cur-glo",
+  // Award (CAN) notice fields. winner-name is multilingual (object) for
+  // single winners and an array of strings under each lang for multi-lot;
+  // winner-identifier is a flat array of org numbers; tender-value is a
+  // flat array of per-lot bid values aligned with winner-identifier.
+  "winner-name",
+  "winner-identifier",
+  "winner-decision-date",
+  "tender-value",
+  "tender-value-cur",
+  "total-value",
+  "total-value-cur",
   "links",
 ];
 
