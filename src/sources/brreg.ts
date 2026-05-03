@@ -11,9 +11,15 @@ export type BrregOrganization = {
   industryCode?: string;
   industryDescription?: string;
   employeeCount?: number;
+  // active = registered, not bankrupt, not winding down, and not deleted.
+  // SERVICEPARTNER 1 AS (org 983209122, deleted 2022-10-27) was returning
+  // active: true because we only checked konkurs/underAvvikling. Now also
+  // checks slettedato — if present, the organization is dissolved.
   active: boolean;
   bankrupt: boolean;
   underWinding: boolean;
+  deleted: boolean;
+  deletedAt?: string;
   registeredAt?: string;
   address: {
     street?: string;
@@ -47,6 +53,7 @@ type BrregEnhet = {
   underAvvikling?: boolean;
   underTvangsavviklingEllerTvangsopplosning?: boolean;
   registreringsdatoEnhetsregisteret?: string;
+  slettedato?: string;
   forretningsadresse?: {
     adresse?: string[];
     postnummer?: string;
@@ -65,16 +72,19 @@ function normalize(payload: BrregEnhet): BrregOrganization {
   const underWinding =
     Boolean(payload.underAvvikling) ||
     Boolean(payload.underTvangsavviklingEllerTvangsopplosning);
+  const deleted = Boolean(payload.slettedato);
   const result: BrregOrganization = {
     orgNumber: payload.organisasjonsnummer ?? "",
     name: payload.navn ?? "",
     organizationForm: payload.organisasjonsform?.kode ?? "",
-    active: !bankrupt && !underWinding,
+    active: !bankrupt && !underWinding && !deleted,
     bankrupt,
     underWinding,
+    deleted,
     address: {},
     raw: payload,
   };
+  if (payload.slettedato) result.deletedAt = payload.slettedato;
   if (payload.organisasjonsform?.beskrivelse) {
     result.organizationFormDescription = payload.organisasjonsform.beskrivelse;
   }

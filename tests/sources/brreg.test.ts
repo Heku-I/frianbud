@@ -116,6 +116,30 @@ describe("BrregClient.lookup", () => {
     expect(org!.active).toBe(false);
   });
 
+  it("flags deleted (slettet) organizations as inactive", async () => {
+    // SERVICEPARTNER 1 AS (org 983209122, deleted 2022-10-27) used to
+    // return active: true because we only checked konkurs/underAvvikling.
+    const fetch = vi.fn(
+      async () =>
+        new Response(
+          JSON.stringify({
+            ...samplePayload,
+            organisasjonsnummer: "983209122",
+            navn: "SERVICEPARTNER 1 AS",
+            slettedato: "2022-10-27",
+            konkurs: false,
+            underAvvikling: false,
+          }),
+          { status: 200 },
+        ),
+    );
+    const client = createBrregClient({ fetch });
+    const org = await client.lookup("983209122");
+    expect(org!.deleted).toBe(true);
+    expect(org!.deletedAt).toBe("2022-10-27");
+    expect(org!.active).toBe(false);
+  });
+
   it("caches lookups (second call hits the LRU)", async () => {
     const fetch = vi.fn(
       async () => new Response(JSON.stringify(samplePayload), { status: 200 }),
