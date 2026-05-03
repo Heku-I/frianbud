@@ -41,10 +41,15 @@ describe("list_recent_awards tool", () => {
       publishedSince?: string;
     };
     expect(call.publishedSince).toBeDefined();
+    // The handler truncates to YYYY-MM-DD (date-only, no time-of-day).
+    // Parsing it back gives midnight UTC of that day, so the diff from
+    // Date.now() is in [days, days + 1) depending on the current time of
+    // day in UTC. Loose bounds avoid time-of-day flake.
+    expect(call.publishedSince).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     const parsed = new Date(call.publishedSince!);
     const diffDays = (Date.now() - parsed.getTime()) / 86_400_000;
-    expect(diffDays).toBeGreaterThan(6.5);
-    expect(diffDays).toBeLessThan(7.5);
+    expect(diffDays).toBeGreaterThanOrEqual(7);
+    expect(diffDays).toBeLessThan(8);
   });
 
   it("auto-derives Doffin keywords from CPV labels when no buyer specified", async () => {
