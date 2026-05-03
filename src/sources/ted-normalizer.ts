@@ -201,14 +201,36 @@ function extractAward(
   const orgNumbers = arrayOf(p["winner-identifier"]);
   const values = arrayOf(p["tender-value"]).map((v) => Number(v));
 
+  // TED's flat search response deduplicates winner-name (per language)
+  // while keeping every related party in winner-identifier — framework
+  // leaders, subcontractors, the buyer's central procurement org, etc.
+  // When array lengths differ, identifiers[i] is NOT the winner of
+  // names[i]: probed empirically — e.g., on notice 348862-2025 the first
+  // identifier (917719993) is actually 4Service's org, attached to a
+  // notice whose winner is "Ability FM Øst AS". To avoid mis-attribution
+  // that would poison incumbent rankings, only pair org numbers when the
+  // two arrays are the same length. Same logic for tender-value, since
+  // it shares the per-party shape of identifiers.
+  const orgsAligned = orgNumbers.length === names.length && names.length > 0;
+  const valuesAligned = values.length === names.length && names.length > 0;
   const winners = names.map((name, i) => {
     const w: NonNullable<Tender["award"]>["winners"][number] = { name };
-    const og = orgNumbers[i];
-    if (og) w.orgNumber = og;
-    const v = values[i];
-    // TED occasionally returns -1 as a "value not disclosed" sentinel.
-    // Treat any non-positive amount as missing rather than a real bid.
-    if (typeof v === "number" && Number.isFinite(v) && v > 0) w.value = v;
+    if (orgsAligned) {
+      const og = orgNumbers[i];
+      if (og) {
+        // TED occasionally formats org numbers as "NO123456789MVA" (the VAT
+        // representation). Strip the prefix/suffix to recover the bare
+        // 9-digit Norwegian organisasjonsnummer for cross-source matching.
+        const cleaned = og.replace(/^NO/, "").replace(/MVA$/, "").replace(/\s+/g, "");
+        w.orgNumber = cleaned;
+      }
+    }
+    if (valuesAligned) {
+      const v = values[i];
+      // TED occasionally returns -1 as a "value not disclosed" sentinel.
+      // Treat any non-positive amount as missing rather than a real bid.
+      if (typeof v === "number" && Number.isFinite(v) && v > 0) w.value = v;
+    }
     return w;
   });
 

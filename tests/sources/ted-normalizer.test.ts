@@ -229,4 +229,40 @@ describe("normalizeTedNotice", () => {
     expect(t.award?.winners[0]?.value).toBeUndefined();
     expect(t.award?.totalValue).toBeUndefined();
   });
+
+  it("drops orgNumber when winner-name and winner-identifier arrays misalign", () => {
+    // Real-world: TED dedupes names per language but keeps every related
+    // party in winner-identifier. Pairing index 0 with index 0 across
+    // arrays of different length attributes the wrong org to the winner.
+    const t = normalizeTedNotice({
+      ...sample,
+      "notice-type": "can-standard",
+      "winner-name": { eng: ["Ability FM Øst AS"] },
+      // 5 ids, but only 1 name. Identifier[0] is actually a different
+      // company's org number (probed real notice 348862-2025).
+      "winner-identifier": [
+        "917719993",
+        "983219721",
+        "984684037",
+        "911463830",
+        "914791723",
+      ],
+    });
+    expect(t.award?.winners).toHaveLength(1);
+    expect(t.award?.winners[0]?.name).toBe("Ability FM Øst AS");
+    expect(t.award?.winners[0]?.orgNumber).toBeUndefined();
+  });
+
+  it("strips NO...MVA wrapping and whitespace from org numbers", () => {
+    const t = normalizeTedNotice({
+      ...sample,
+      "notice-type": "can-standard",
+      "winner-name": { eng: ["X AS", "Y AS"] },
+      "winner-identifier": ["NO914791723MVA", "984 684 037"],
+    });
+    expect(t.award?.winners.map((w) => w.orgNumber)).toEqual([
+      "914791723",
+      "984684037",
+    ]);
+  });
 });
