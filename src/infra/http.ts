@@ -31,9 +31,19 @@ export async function httpJson<T = unknown>(
     const ctrl = new AbortController();
     const timer = opts.timeoutMs ? setTimeout(() => ctrl.abort(), opts.timeoutMs) : null;
     try {
+      const headers: Record<string, string> = {
+        accept: "application/json",
+        ...(opts.headers ?? {}),
+      };
+      const hasContentType = Object.keys(headers).some(
+        (h) => h.toLowerCase() === "content-type",
+      );
+      if (opts.body !== undefined && !hasContentType) {
+        headers["content-type"] = "application/json";
+      }
       const init: RequestInit = {
         method: opts.method ?? "GET",
-        headers: { accept: "application/json", ...(opts.headers ?? {}) },
+        headers,
         signal: ctrl.signal,
       };
       if (opts.body !== undefined) {
