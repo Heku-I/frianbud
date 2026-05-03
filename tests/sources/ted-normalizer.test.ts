@@ -63,4 +63,44 @@ describe("normalizeTedNotice", () => {
     const t = normalizeTedNotice({ ...sample, "notice-type": "can-standard" });
     expect(t.status).toBe("awarded");
   });
+
+  it("dedupes repeated CPV codes", () => {
+    const t = normalizeTedNotice({
+      ...sample,
+      "classification-cpv": ["90910000", "45000000", "90910000", "45000000", "90910000"],
+    });
+    expect(t.cpvCodes).toEqual(["90910000", "45000000"]);
+  });
+
+  it("dedupes regions and maps 3-letter countries to 2-letter", () => {
+    const t = normalizeTedNotice({
+      ...sample,
+      "place-of-performance": ["NO081", "NOR", "NO081", "NOR"],
+    });
+    expect(t.regions).toEqual(["NO081", "NO"]);
+  });
+
+  it("normalizes 'YYYY-MM-DDZ' date strings to full ISO 8601 datetime", () => {
+    const t = normalizeTedNotice({
+      ...sample,
+      "deadline-receipt-tender-date-lot": ["2026-06-01Z"],
+    });
+    expect(t.deadlineAt).toBe("2026-06-01T00:00:00Z");
+  });
+
+  it("normalizes 'YYYY-MM-DD+HH:MM' publication-date to ISO 8601 datetime", () => {
+    const t = normalizeTedNotice({
+      ...sample,
+      "publication-date": "2026-04-30+02:00",
+    });
+    expect(t.publishedAt).toBe("2026-04-30T00:00:00Z");
+  });
+
+  it("preserves time-of-day in full ISO 8601 datetime inputs", () => {
+    const t = normalizeTedNotice({
+      ...sample,
+      "publication-date": "2026-04-30T15:33:48Z",
+    });
+    expect(t.publishedAt).toBe("2026-04-30T15:33:48Z");
+  });
 });

@@ -36,13 +36,17 @@ function pickLangString(field: unknown): string {
   return "";
 }
 
-// TED publication-date is "YYYY-MM-DD+HH:MM" (date with timezone, no time).
-// Normalize to full ISO 8601 datetime (UTC, midnight).
+// TED dates come in several shapes:
+//   "2026-07-30+02:00"  publication-date (date + timezone offset, no time)
+//   "2026-06-01Z"       deadline-receipt-tender-date-lot (date + Z, no time)
+//   "2026-05-01T15:33:48Z"  full ISO 8601 (rare, but possible on eForms fields)
+// Normalize all of them to full ISO 8601 datetime in UTC. Date-only inputs
+// become midnight UTC; full datetimes have any timezone info coerced to Z.
 function normalizeIsoDateTime(input: string): string {
-  const datePart = input.split(/[+T]/)[0];
-  if (datePart && /^\d{4}-\d{2}-\d{2}$/.test(datePart)) {
-    return `${datePart}T00:00:00Z`;
-  }
+  const dt = input.match(/^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})/);
+  if (dt) return `${dt[1]!}Z`;
+  const d = input.match(/^(\d{4}-\d{2}-\d{2})/);
+  if (d) return `${d[1]!}T00:00:00Z`;
   return input;
 }
 
@@ -67,9 +71,14 @@ export function normalizeTedNotice(payload: unknown): Tender {
     throw new Error("invalid TED payload: missing publication-number");
   }
 
+  // TED's eForms structure often repeats the same CPV across multiple lot/part
+  // sections, so the flat array can have duplicates. Dedupe while preserving
+  // the original order (first occurrence wins).
   const cpvField = p["classification-cpv"];
   const cpvCodes = Array.isArray(cpvField)
-    ? cpvField.filter((x): x is string => typeof x === "string")
+    ? Array.from(
+        new Set(cpvField.filter((x): x is string => typeof x === "string")),
+      )
     : [];
 
   const buyerName = pickLangString(p["buyer-name"]) || "Unknown";
@@ -81,9 +90,18 @@ export function normalizeTedNotice(payload: unknown): Tender {
       : "NOR";
   const buyerCountry = map3To2(buyerCountryRaw);
 
+  // place-of-performance often contains both 3-letter country codes (NOR) and
+  // NUTS-3 codes (NO081) alongside repeats. Map countries to 2-letter, then
+  // dedupe.
   const placeArr = p["place-of-performance"];
   const regions = Array.isArray(placeArr)
-    ? placeArr.filter((x): x is string => typeof x === "string").map(map3To2)
+    ? Array.from(
+        new Set(
+          placeArr
+            .filter((x): x is string => typeof x === "string")
+            .map(map3To2),
+        ),
+      )
     : [];
 
   const title = pickLangString(p["notice-title"]);
