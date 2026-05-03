@@ -25,7 +25,7 @@ Norway publishes about 742 billion NOK of public procurement every year. By law,
 
 ## Install
 
-Add `frianbud` to your MCP client. The same JSON snippet works for Claude Desktop, VS Code, and Cursor:
+Add `frianbud` to your MCP client. The minimum config:
 
 ```json
 {
@@ -39,6 +39,26 @@ Add `frianbud` to your MCP client. The same JSON snippet works for Claude Deskto
 ```
 
 For Claude Desktop, paste this into `claude_desktop_config.json`. For VS Code and Cursor, paste it into your client's MCP settings. Restart your client and the eight `frianbud` tools become available to the agent.
+
+### Recommended: enable Doffin's official Public API
+
+frianbud ships with two Doffin integration paths. By default, the server uses an unofficial SPA backend (no auth required, but no server-side filters and 1000-hit cap). For production-quality Doffin coverage — server-side filtering by CPV/region/status/date plus structured lot-level winner data — register a free subscription key at [developer.doffin.no](https://developer.doffin.no) and pass it via env:
+
+```json
+{
+  "mcpServers": {
+    "frianbud": {
+      "command": "npx",
+      "args": ["-y", "frianbud"],
+      "env": {
+        "FRIANBUD_DOFFIN_API_KEY": "your-subscription-key-here"
+      }
+    }
+  }
+}
+```
+
+Signup takes about two minutes via EU Login / ID-porten. Subscribe to the **Public API** product and copy your primary subscription key. The key is sent as `Ocp-Apim-Subscription-Key` on every Doffin request.
 
 ## First-time setup
 
@@ -106,8 +126,8 @@ flowchart LR
 ```
 
 - **TED** is the EU's Tenders Electronic Daily — the official, stable open API. Every Norwegian above-threshold tender (~1.4M NOK and up) is published there. We extract winners, contract values, and the full eForms structure.
-- **Doffin** is Norway's national procurement database, covering below-threshold tenders. The integration uses Doffin's public webclient API (the same endpoints doffin.no's UI talks to). It's not officially documented as a public API, so we treat it as best-effort and gate it behind a health check.
-- **Brønnøysund Register Centre** (`data.brreg.no`) provides canonical company data — registered names, addresses, industry codes, employee counts, parent organizations. Used to validate winner identities and characterize competition.
+- **Doffin** is Norway's national procurement database, covering below-threshold tenders. With `FRIANBUD_DOFFIN_API_KEY` set, the server uses Doffin's official Public API (`api.doffin.no/public/v2/search`) with full server-side filtering and lot-level structured winner data. Without a key, the server falls back to the unofficial SPA backend (works, but with the limitations noted below).
+- **Brønnøysund Register Centre** (`data.brreg.no`) provides canonical company data — registered names, addresses, industry codes, employee counts, parent organizations, and dissolution dates. Used to validate winner identities, characterize competition, and detect inactive firms.
 - **The scorer** is rule-based and deterministic.
 - **CPV codes** ship bundled (~9,500 entries) with both English and Norwegian labels. Norwegian translations are sourced from Doffin's public CPV picker.
 
@@ -115,12 +135,10 @@ flowchart LR
 
 Honest list of what v1 does *not* do, with workarounds where they exist.
 
-- **Doffin is unofficial.** If Doffin changes its internal endpoints, the client may temporarily return zero results. The server detects this via a health check and falls back to TED-only with a clear warning. Disable Doffin entirely with `FRIANBUD_DOFFIN=off`.
-- **Doffin's API has no server-side filters beyond free-text search.** CPV codes, status, and date filters in the request body are silently ignored — Doffin's frontend filters client-side after the call. We work around this by auto-deriving Norwegian keywords from CPV labels (e.g., cleaning CPVs become a "Rengjøring tildelt" search) and post-filtering after detail enrichment. Coverage on narrow CPV queries is therefore weaker than TED's. For sub-threshold contracts that live only on Doffin, the agent may miss some — pass a Norwegian-language `query` argument to widen the net.
-- **Doffin caps results at 1,000 per query.** Even with optimal filters, you can't page past the first 1k matching hits.
+- **Doffin without an API key uses the unofficial SPA backend** — no server-side CPV/status/location filters, 1,000-hit accessibility cap, contract isn't versioned. Set `FRIANBUD_DOFFIN_API_KEY` to switch to Doffin's official Public API and get all those filters server-side plus structured lot-level winner data. Disable Doffin entirely with `FRIANBUD_DOFFIN=off`.
 - **TED only covers above-threshold tenders** (~1.4M NOK and up). For Norwegian SMEs competing for smaller contracts, Doffin is what matters.
 - **TED's place-of-performance reflects buyer registration, not actual operating region.** "Akershus kollektivterminaler" gets tagged NO081/Oslo because their HQ is in Oslo, even though they operate Akershus terminals. Workaround: call `lookup_organization` on the buyer's org number to get the registered municipality and reason about it directly.
-- **TED's flat search response collapses winner-name per language but keeps every related party in winner-identifier.** When the arrays don't align (1 name + 5 ids), we deliberately drop org numbers rather than mis-attribute them. Agents wanting full lot-by-lot winner data should call `get_tender` and parse the eForms XML in `raw`.
+- **TED's flat search response collapses winner-name per language but keeps every related party in winner-identifier.** When the arrays don't align (1 name + 5 ids), we deliberately drop org numbers rather than mis-attribute them. For length-1 cases the alignment is correct ~85% of the time and incorrect ~15% (TED's flat output sometimes returns a related party as the lone identifier). Agents needing strong accuracy should verify each TED-side org number via `lookup_organization` and drop mismatches by canonical-name comparison. Doffin via the official Public API has lot-by-lot structured winners and doesn't have this problem.
 - **Scoring is deliberately simple in v1.** Pure rule-based, deterministic, transparent. Smarter scoring (text similarity, embeddings) is on the v0.2 roadmap but won't replace the rule-based path.
 - **No write actions.** This server is read-only. It does not submit bids or modify any external state.
 - **Norwegian CPV labels: 99.5% coverage.** A handful of obscure stationary categories don't have Doffin translations yet. PRs welcome.
