@@ -5,6 +5,23 @@ import type { Tender } from "../types.js";
 
 const BASE = "https://api.ted.europa.eu/v3";
 
+// TED's expert query DSL accepts only ISO 3166-1 alpha-3 country codes (NOR,
+// DNK, ...). Our internal Tender type carries 2-letter alpha-2 codes (NO, DK).
+// Map at the boundary so callers stay in 2-letter land.
+const COUNTRY_2_TO_3: Record<string, string> = {
+  AT: "AUT", BE: "BEL", BG: "BGR", CH: "CHE", CY: "CYP", CZ: "CZE",
+  DE: "DEU", DK: "DNK", EE: "EST", ES: "ESP", FI: "FIN", FR: "FRA",
+  GB: "GBR", GR: "GRC", HR: "HRV", HU: "HUN", IE: "IRL", IS: "ISL",
+  IT: "ITA", LI: "LIE", LT: "LTU", LU: "LUX", LV: "LVA", MT: "MLT",
+  NL: "NLD", NO: "NOR", PL: "POL", PT: "PRT", RO: "ROU", SE: "SWE",
+  SI: "SVN", SK: "SVK",
+};
+
+function toTedCountry(code: string): string {
+  if (code.length === 3) return code;
+  return COUNTRY_2_TO_3[code.toUpperCase()] ?? code;
+}
+
 // TED's Search API requires an explicit `fields` whitelist. Sending a field name
 // that isn't in the OpenAPI enum returns 400. This list is the minimum we need
 // to populate the unified Tender type. Adding fields here should be matched by
@@ -54,7 +71,7 @@ export function createTedClient(
 
   function buildExpertQuery(opts: TedSearchOptions): string {
     const parts: string[] = [];
-    if (opts.country) parts.push(`place-of-performance=${opts.country}`);
+    if (opts.country) parts.push(`place-of-performance=${toTedCountry(opts.country)}`);
     if (opts.cpvCodes && opts.cpvCodes.length > 0) {
       parts.push(`classification-cpv IN (${opts.cpvCodes.join(",")})`);
     }

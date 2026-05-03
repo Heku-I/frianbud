@@ -50,6 +50,26 @@ describe("TedClient.search", () => {
     const sentBody = JSON.parse(callArg.body);
     expect(sentBody.limit).toBeLessThanOrEqual(250);
   });
+
+  it("maps 2-letter country code to TED's 3-letter form", async () => {
+    const fetch = fakeFetchOk({ notices: [], totalNoticeCount: 0 });
+    const client = createTedClient({ fetch });
+    await client.search({ country: "NO" });
+    const callArg = fetch.mock.calls[0]![1] as { body: string };
+    const sentBody = JSON.parse(callArg.body);
+    expect(sentBody.query).toContain("place-of-performance=NOR");
+    expect(sentBody.query).not.toContain("place-of-performance=NO ");
+    expect(sentBody.query).not.toMatch(/place-of-performance=NO$/);
+  });
+
+  it("passes through 3-letter country codes unchanged", async () => {
+    const fetch = fakeFetchOk({ notices: [], totalNoticeCount: 0 });
+    const client = createTedClient({ fetch });
+    await client.search({ country: "DNK" });
+    const callArg = fetch.mock.calls[0]![1] as { body: string };
+    const sentBody = JSON.parse(callArg.body);
+    expect(sentBody.query).toContain("place-of-performance=DNK");
+  });
 });
 
 describe("TedClient.getNotice", () => {
