@@ -5,6 +5,7 @@ import type { SearchService } from "../domain/search.js";
 import type { CpvService } from "../domain/cpv.js";
 import type { TedClient } from "../sources/ted.js";
 import type { DoffinGate } from "../sources/doffin-health-gate.js";
+import type { BrregClient } from "../sources/brreg.js";
 
 export type ToolContext = {
   logger: Logger;
@@ -13,6 +14,7 @@ export type ToolContext = {
   cpv: CpvService;
   ted: TedClient;
   doffin: DoffinGate;
+  brreg: BrregClient;
 };
 
 export type ToolDefinition<S extends z.ZodTypeAny = z.ZodTypeAny> = {

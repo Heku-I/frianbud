@@ -18,6 +18,7 @@ import { createSearchService } from "./domain/search.js";
 import { createTedClient } from "./sources/ted.js";
 import { createDoffinClient } from "./sources/doffin.js";
 import { createDoffinHealthGate } from "./sources/doffin-health-gate.js";
+import { createBrregClient } from "./sources/brreg.js";
 import { tools as toolList } from "./tools/index.js";
 import type { AnyToolDefinition, ToolContext } from "./tools/types.js";
 
@@ -164,6 +165,7 @@ async function main(): Promise<void> {
   const doffinClient = createDoffinClient();
   const doffin = await createDoffinHealthGate(doffinClient);
   logger.info("doffin_health", { enabled: doffin.isEnabled() });
+  const brreg = createBrregClient();
 
   const profilePath = resolveProfilePath();
   const profile = createProfileService(profilePath, {
@@ -182,6 +184,7 @@ async function main(): Promise<void> {
     cpv,
     ted,
     doffin,
+    brreg,
   };
 
   const toolsByName = new Map<string, AnyToolDefinition>();

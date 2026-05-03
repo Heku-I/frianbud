@@ -6,6 +6,7 @@ import { getTenderTool } from "./get-tender.js";
 import { listUpcomingDeadlinesTool } from "./list-upcoming-deadlines.js";
 import { listRecentAwardsTool } from "./list-recent-awards.js";
 import { lookupCpvTool } from "./lookup-cpv.js";
+import { lookupOrganizationTool } from "./lookup-organization.js";
 
 export const tools: AnyToolDefinition[] = [
   setupProfileTool as AnyToolDefinition,
@@ -15,4 +16,5 @@ export const tools: AnyToolDefinition[] = [
   listUpcomingDeadlinesTool as AnyToolDefinition,
   listRecentAwardsTool as AnyToolDefinition,
   lookupCpvTool as AnyToolDefinition,
+  lookupOrganizationTool as AnyToolDefinition,
 ];
