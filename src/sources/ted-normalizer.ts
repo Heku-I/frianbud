@@ -105,8 +105,15 @@ export function normalizeTedNotice(payload: unknown): Tender {
     : [];
 
   const title = pickLangString(p["notice-title"]);
-  const descriptionFromLot = pickLangString(p["description-lot"]);
-  const description = descriptionFromLot.length > 0 ? descriptionFromLot : title;
+  // eForms exposes description across four nested levels. Prefer the most
+  // specific (lot) and fall back upward; final fallback is the title so
+  // description is never empty.
+  const description =
+    pickLangString(p["description-lot"]) ||
+    pickLangString(p["description-part"]) ||
+    pickLangString(p["description-proc"]) ||
+    pickLangString(p["description-glo"]) ||
+    title;
 
   const titleObj = p["notice-title"];
   const languages =

@@ -103,4 +103,44 @@ describe("normalizeTedNotice", () => {
     });
     expect(t.publishedAt).toBe("2026-04-30T15:33:48Z");
   });
+
+  it("uses description-lot as primary description source", () => {
+    const t = normalizeTedNotice({
+      ...sample,
+      "notice-title": { eng: "Title only" },
+      "description-lot": { eng: ["Real lot scope text here"] },
+    });
+    expect(t.description).toBe("Real lot scope text here");
+  });
+
+  it("falls back through description-part, -proc, -glo when -lot is absent", () => {
+    const partOnly = normalizeTedNotice({
+      ...sample,
+      "notice-title": { eng: "Title" },
+      "description-part": { eng: ["Part-level scope"] },
+    });
+    expect(partOnly.description).toBe("Part-level scope");
+
+    const procOnly = normalizeTedNotice({
+      ...sample,
+      "notice-title": { eng: "Title" },
+      "description-proc": { eng: ["Procedure-level scope"] },
+    });
+    expect(procOnly.description).toBe("Procedure-level scope");
+
+    const gloOnly = normalizeTedNotice({
+      ...sample,
+      "notice-title": { eng: "Title" },
+      "description-glo": { eng: ["Global scope"] },
+    });
+    expect(gloOnly.description).toBe("Global scope");
+  });
+
+  it("falls back to title when no description field is populated", () => {
+    const t = normalizeTedNotice({
+      ...sample,
+      "notice-title": { eng: "Just a title" },
+    });
+    expect(t.description).toBe("Just a title");
+  });
 });
