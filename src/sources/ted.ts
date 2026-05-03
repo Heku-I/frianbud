@@ -22,6 +22,15 @@ function toTedCountry(code: string): string {
   return COUNTRY_2_TO_3[code.toUpperCase()] ?? code;
 }
 
+// TED's expert search rejects ISO 8601 date strings (YYYY-MM-DD); it expects
+// either YYYYMMDD or today(±N). Accept ISO from callers and convert.
+function toTedDate(input: string): string {
+  if (/^today\([+-]?\d+\)$/i.test(input) || /^\d{8}$/.test(input)) return input;
+  const m = input.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (m) return `${m[1]!}${m[2]!}${m[3]!}`;
+  return input;
+}
+
 // TED's Search API requires an explicit `fields` whitelist. Sending a field name
 // that isn't in the OpenAPI enum returns 400. This list is the minimum we need
 // to populate the unified Tender type. Adding fields here should be matched by
@@ -49,6 +58,10 @@ export type TedSearchOptions = {
   status?: "open" | "closed" | "awarded";
   query?: string;
   limit?: number;
+  // TED scope. Default LATEST returns the current OJ S release; ACTIVE and ALL
+  // both default-sort the entire archive (oldest first), which surfaces stale
+  // 10+ year-old notices. Override only for historical research.
+  scope?: "LATEST" | "ACTIVE" | "ALL";
 };
 
 export type TedClient = {
@@ -75,9 +88,11 @@ export function createTedClient(
     if (opts.cpvCodes && opts.cpvCodes.length > 0) {
       parts.push(`classification-cpv IN (${opts.cpvCodes.join(",")})`);
     }
-    if (opts.publishedSince) parts.push(`publication-date>=${opts.publishedSince}`);
+    if (opts.publishedSince) parts.push(`publication-date>=${toTedDate(opts.publishedSince)}`);
     if (opts.deadlineBefore) {
-      parts.push(`deadline-receipt-tender-date-lot<=${opts.deadlineBefore}`);
+      parts.push(
+        `deadline-receipt-tender-date-lot<=${toTedDate(opts.deadlineBefore)}`,
+      );
     }
     if (opts.query) parts.push(opts.query);
     return parts.length > 0 ? parts.join(" AND ") : "*";
@@ -93,7 +108,7 @@ export function createTedClient(
         query: buildExpertQuery(opts),
         fields: SEARCH_FIELDS,
         limit: Math.min(opts.limit ?? 50, 250),
-        scope: "ALL",
+        scope: opts.scope ?? "LATEST",
       };
       const res = await httpJson<{ notices?: unknown[] }>(
         `${BASE}/notices/search`,
@@ -117,6 +132,8 @@ export function createTedClient(
         query: `publication-number="${id}"`,
         fields: SEARCH_FIELDS,
         limit: 1,
+        // ALL because we want to find a specific notice regardless of when
+        // it was published.
         scope: "ALL",
       };
       const res = await httpJson<{ notices?: unknown[] }>(

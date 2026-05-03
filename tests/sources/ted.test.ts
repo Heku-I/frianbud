@@ -70,6 +70,46 @@ describe("TedClient.search", () => {
     const sentBody = JSON.parse(callArg.body);
     expect(sentBody.query).toContain("place-of-performance=DNK");
   });
+
+  it("defaults scope to LATEST so callers see current notices", async () => {
+    const fetch = fakeFetchOk({ notices: [], totalNoticeCount: 0 });
+    const client = createTedClient({ fetch });
+    await client.search({});
+    const callArg = fetch.mock.calls[0]![1] as { body: string };
+    const sentBody = JSON.parse(callArg.body);
+    expect(sentBody.scope).toBe("LATEST");
+  });
+
+  it("respects an explicit scope override", async () => {
+    const fetch = fakeFetchOk({ notices: [], totalNoticeCount: 0 });
+    const client = createTedClient({ fetch });
+    await client.search({ scope: "ALL" });
+    const callArg = fetch.mock.calls[0]![1] as { body: string };
+    const sentBody = JSON.parse(callArg.body);
+    expect(sentBody.scope).toBe("ALL");
+  });
+
+  it("converts ISO 8601 dates to TED's YYYYMMDD format", async () => {
+    const fetch = fakeFetchOk({ notices: [], totalNoticeCount: 0 });
+    const client = createTedClient({ fetch });
+    await client.search({
+      publishedSince: "2026-04-01",
+      deadlineBefore: "2026-06-30",
+    });
+    const callArg = fetch.mock.calls[0]![1] as { body: string };
+    const sentBody = JSON.parse(callArg.body);
+    expect(sentBody.query).toContain("publication-date>=20260401");
+    expect(sentBody.query).toContain("deadline-receipt-tender-date-lot<=20260630");
+  });
+
+  it("passes through TED-native today(N) date format", async () => {
+    const fetch = fakeFetchOk({ notices: [], totalNoticeCount: 0 });
+    const client = createTedClient({ fetch });
+    await client.search({ publishedSince: "today(-30)" });
+    const callArg = fetch.mock.calls[0]![1] as { body: string };
+    const sentBody = JSON.parse(callArg.body);
+    expect(sentBody.query).toContain("publication-date>=today(-30)");
+  });
 });
 
 describe("TedClient.getNotice", () => {
