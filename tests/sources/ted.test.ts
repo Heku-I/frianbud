@@ -110,6 +110,49 @@ describe("TedClient.search", () => {
     const sentBody = JSON.parse(callArg.body);
     expect(sentBody.query).toContain("publication-date>=today(-30)");
   });
+
+  it("CPV filter: single code uses equality (TED rejects IN on classification-cpv)", async () => {
+    const fetch = fakeFetchOk({ notices: [], totalNoticeCount: 0 });
+    const client = createTedClient({ fetch });
+    await client.search({ cpvCodes: ["90910000-9"] });
+    const callArg = fetch.mock.calls[0]![1] as { body: string };
+    const sentBody = JSON.parse(callArg.body);
+    // Strips check digit, no IN operator
+    expect(sentBody.query).toContain("classification-cpv=90910000");
+    expect(sentBody.query).not.toContain("90910000-9");
+    expect(sentBody.query).not.toContain(" IN ");
+  });
+
+  it("CPV filter: multiple codes use OR expansion", async () => {
+    const fetch = fakeFetchOk({ notices: [], totalNoticeCount: 0 });
+    const client = createTedClient({ fetch });
+    await client.search({ cpvCodes: ["90910000-9", "90911000-6"] });
+    const callArg = fetch.mock.calls[0]![1] as { body: string };
+    const sentBody = JSON.parse(callArg.body);
+    expect(sentBody.query).toContain("classification-cpv=90910000");
+    expect(sentBody.query).toContain("classification-cpv=90911000");
+    expect(sentBody.query).toContain(" OR ");
+  });
+
+  it("status=awarded adds notice-type filter and forces scope ALL", async () => {
+    const fetch = fakeFetchOk({ notices: [], totalNoticeCount: 0 });
+    const client = createTedClient({ fetch });
+    await client.search({ status: "awarded" });
+    const callArg = fetch.mock.calls[0]![1] as { body: string };
+    const sentBody = JSON.parse(callArg.body);
+    expect(sentBody.query).toContain("notice-type=can-standard");
+    expect(sentBody.scope).toBe("ALL");
+  });
+
+  it("status=open keeps default LATEST scope and adds no notice-type filter", async () => {
+    const fetch = fakeFetchOk({ notices: [], totalNoticeCount: 0 });
+    const client = createTedClient({ fetch });
+    await client.search({ status: "open" });
+    const callArg = fetch.mock.calls[0]![1] as { body: string };
+    const sentBody = JSON.parse(callArg.body);
+    expect(sentBody.scope).toBe("LATEST");
+    expect(sentBody.query).not.toContain("notice-type=");
+  });
 });
 
 describe("TedClient.getNotice", () => {

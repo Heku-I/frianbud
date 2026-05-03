@@ -90,13 +90,31 @@ export function createTedClient(
     const parts: string[] = [];
     if (opts.country) parts.push(`place-of-performance=${toTedCountry(opts.country)}`);
     if (opts.cpvCodes && opts.cpvCodes.length > 0) {
-      parts.push(`classification-cpv IN (${opts.cpvCodes.join(",")})`);
+      // TED's classification-cpv field rejects:
+      //   - the IN(...) operator (works on other fields, not this one)
+      //   - the trailing check digit ('90910000-9' → must be '90910000')
+      // Strip check digits and OR-expand.
+      const codes = opts.cpvCodes
+        .map((c) => c.split("-")[0]!)
+        .filter((c) => /^\d{8}$/.test(c));
+      if (codes.length === 1) {
+        parts.push(`classification-cpv=${codes[0]!}`);
+      } else if (codes.length > 1) {
+        const ored = codes.map((c) => `classification-cpv=${c}`).join(" OR ");
+        parts.push(`(${ored})`);
+      }
     }
     if (opts.publishedSince) parts.push(`publication-date>=${toTedDate(opts.publishedSince)}`);
     if (opts.deadlineBefore) {
       parts.push(
         `deadline-receipt-tender-date-lot<=${toTedDate(opts.deadlineBefore)}`,
       );
+    }
+    // Map our internal status to TED's notice-type filter. Awards are
+    // overwhelmingly "can-standard"; rarer variants (can-modif, can-social,
+    // can-tran, can-desg) are not exposed here in v0.1.
+    if (opts.status === "awarded") {
+      parts.push("notice-type=can-standard");
     }
     if (opts.query) parts.push(opts.query);
     return parts.length > 0 ? parts.join(" AND ") : "*";
@@ -108,11 +126,14 @@ export function createTedClient(
       const cached = cache.get(key);
       if (cached) return cached;
 
+      // LATEST is just today's OJ S release. For award queries we need a
+      // wider window because awards aren't published every day.
+      const defaultScope = opts.status === "awarded" ? "ALL" : "LATEST";
       const body = {
         query: buildExpertQuery(opts),
         fields: SEARCH_FIELDS,
         limit: Math.min(opts.limit ?? 50, 250),
-        scope: opts.scope ?? "LATEST",
+        scope: opts.scope ?? defaultScope,
       };
       const res = await httpJson<{ notices?: unknown[] }>(
         `${BASE}/notices/search`,

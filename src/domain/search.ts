@@ -12,6 +12,7 @@ export type SearchOptions = {
   valueMin?: number;
   valueMax?: number;
   deadlineBefore?: string;
+  publishedSince?: string;
   status?: "open" | "closed" | "awarded";
   limit?: number;
 };
@@ -39,6 +40,7 @@ export function createSearchService(deps: {
         country: "NO",
         ...(opts.cpvCodes ? { cpvCodes: opts.cpvCodes } : {}),
         ...(opts.deadlineBefore ? { deadlineBefore: opts.deadlineBefore } : {}),
+        ...(opts.publishedSince ? { publishedSince: opts.publishedSince } : {}),
         ...(opts.status ? { status: opts.status } : {}),
         ...(opts.query ? { query: opts.query } : {}),
         ...(opts.limit ? { limit: opts.limit } : {}),

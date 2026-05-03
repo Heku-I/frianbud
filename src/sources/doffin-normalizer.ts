@@ -11,21 +11,32 @@ function asStringArr(v: unknown): string[] {
 }
 
 function deriveStatus(
-  s: unknown,
+  payload: Record<string, unknown>,
 ): "open" | "closed" | "awarded" | "cancelled" {
-  if (typeof s !== "string") return "open";
-  switch (s.toUpperCase()) {
-    case "ACTIVE":
-      return "open";
-    case "EXPIRED":
-      return "closed";
-    case "CANCELLED":
-      return "cancelled";
-    case "AWARDED":
-      return "awarded";
-    default:
-      return "open";
+  // Doffin's allTypes is the authoritative signal. Result/award notices
+  // (ANNOUNCEMENT_OF_CONCLUSION_OF_CONTRACT, COMPETITION_RESULT, etc.) all
+  // include "RESULT" in allTypes. Cancellations include "CANCELLATION".
+  // The status field is null for these notice categories — only ACTIVE
+  // competition notices have a non-null status.
+  const allTypes = payload["allTypes"];
+  if (Array.isArray(allTypes)) {
+    if (allTypes.includes("RESULT")) return "awarded";
+    if (allTypes.includes("CANCELLATION")) return "cancelled";
   }
+  const status = payload["status"];
+  if (typeof status === "string") {
+    switch (status.toUpperCase()) {
+      case "ACTIVE":
+        return "open";
+      case "EXPIRED":
+        return "closed";
+      case "CANCELLED":
+        return "cancelled";
+      case "AWARDED":
+        return "awarded";
+    }
+  }
+  return "open";
 }
 
 export function normalizeDoffinSearchHit(payload: unknown): Tender {
@@ -65,7 +76,7 @@ export function normalizeDoffinSearchHit(payload: unknown): Tender {
     publishedAt,
     regions: asStringArr(p["locationId"]),
     languages: ["no"],
-    status: deriveStatus(p["status"]),
+    status: deriveStatus(p),
     raw: payload,
   };
 

@@ -60,6 +60,24 @@ describe("normalizeDoffinSearchHit", () => {
     expect(t.status).toBe("closed");
   });
 
+  it("derives status 'awarded' from allTypes RESULT (status null on award notices)", () => {
+    const t = normalizeDoffinSearchHit({
+      ...search,
+      status: null,
+      allTypes: ["ANNOUNCEMENT_OF_CONCLUSION_OF_CONTRACT", "RESULT"],
+    });
+    expect(t.status).toBe("awarded");
+  });
+
+  it("derives status 'cancelled' from allTypes CANCELLATION", () => {
+    const t = normalizeDoffinSearchHit({
+      ...search,
+      status: null,
+      allTypes: ["CANCELLATION"],
+    });
+    expect(t.status).toBe("cancelled");
+  });
+
   it("preserves the original payload in raw", () => {
     const t = normalizeDoffinSearchHit(search);
     expect(t.raw).toBe(search);
