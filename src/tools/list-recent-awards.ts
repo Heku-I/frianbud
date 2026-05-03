@@ -17,7 +17,14 @@ function isoDateNDaysAgo(days: number): string {
 export const listRecentAwardsTool: ToolDefinition<typeof inputSchema> = {
   name: "list_recent_awards",
   description:
-    "List contracts that were awarded in the last N days (default 30). Filter by buyer name or CPV code. Useful for prompts like 'who won the last 5 IT contracts from Oslo Kommune?' or 'recent awards for cleaning services'.",
+    "List contracts awarded in the last N days (default 30). Filter by buyer name or CPV code. " +
+    "TED coverage is excellent for above-threshold contracts (1.4M NOK+) and returns full winner names, " +
+    "org numbers, per-winner values, and total contract value. " +
+    "Doffin coverage of awards is weaker because Doffin's API has no server-side CPV or status filter — " +
+    "for incumbent rankings on a specific category, also pass a Norwegian keyword via search_tenders' " +
+    "query field (e.g., 'renhold tildelt' for cleaning awards) to surface sub-threshold kommune contracts " +
+    "Doffin holds exclusively. Useful for prompts like 'who won the last 5 IT contracts from Oslo Kommune?' " +
+    "or 'recent awards for cleaning services'.",
   inputSchema,
   async handler({ sinceDays = 30, buyer, cpvCodes, limit }, ctx) {
     const opts: SearchOptions = {

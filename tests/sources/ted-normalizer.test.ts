@@ -216,4 +216,17 @@ describe("normalizeTedNotice", () => {
     expect(t.status).toBe("open");
     expect(t.award).toBeUndefined();
   });
+
+  it("treats -1 sentinel from TED as 'value undisclosed' (drops it)", () => {
+    const t = normalizeTedNotice({
+      ...sample,
+      "notice-type": "can-standard",
+      "winner-name": { eng: ["Coor Service Management AS"] },
+      "winner-identifier": ["123456789"],
+      "tender-value": ["-1"],
+      "total-value": -1,
+    });
+    expect(t.award?.winners[0]?.value).toBeUndefined();
+    expect(t.award?.totalValue).toBeUndefined();
+  });
 });

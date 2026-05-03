@@ -26,6 +26,11 @@ export type DoffinSearchOptions = {
   deadlineBefore?: string;
   limit?: number;
   enrichCpvs?: boolean;
+  // Status hint. Doffin's API has no status filter, but when status=awarded
+  // and the caller hasn't supplied a query, we bias searchString toward
+  // award notices using the Norwegian "tildelt" keyword. Verified: this
+  // narrows from ~153k corpus to ~50 award-typed hits.
+  status?: "open" | "closed" | "awarded";
 };
 
 export type DoffinClient = {
@@ -116,12 +121,21 @@ export function createDoffinClient(deps: {
       // Doffin's body schema accepts `searchString` for free-text and ignores
       // structured filters like `cpvCodes` (verified). Pass `searchString`
       // through and apply structured filters client-side after enrichment.
+      // For award queries, bias the page size up — most of the latest 50
+      // hits are open competitions, so awards get pushed off the first
+      // page. 200 hits gives enough room for awards to surface even
+      // without an explicit searchString.
+      const defaultSize = opts.status === "awarded" ? 200 : 50;
       const body: Record<string, unknown> = {
-        size: Math.min(opts.limit ?? 50, 1000),
+        size: Math.min(opts.limit ?? defaultSize, 1000),
         page: 1,
       };
-      if (opts.query && opts.query.length > 0) {
-        body["searchString"] = opts.query;
+      const explicitQuery = opts.query && opts.query.length > 0 ? opts.query : undefined;
+      const awardHint =
+        opts.status === "awarded" && !explicitQuery ? "tildelt" : undefined;
+      const searchString = explicitQuery ?? awardHint;
+      if (searchString) {
+        body["searchString"] = searchString;
       }
       const res = await httpJson<{ hits?: unknown[] }>(SEARCH_URL, {
         method: "POST",

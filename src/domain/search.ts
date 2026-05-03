@@ -50,6 +50,7 @@ export function createSearchService(deps: {
         ...(opts.regions ? { regions: opts.regions } : {}),
         ...(opts.deadlineBefore ? { deadlineBefore: opts.deadlineBefore } : {}),
         ...(opts.query ? { query: opts.query } : {}),
+        ...(opts.status ? { status: opts.status } : {}),
         ...(opts.limit ? { limit: opts.limit } : {}),
       };
 

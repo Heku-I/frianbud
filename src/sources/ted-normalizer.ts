@@ -206,7 +206,9 @@ function extractAward(
     const og = orgNumbers[i];
     if (og) w.orgNumber = og;
     const v = values[i];
-    if (typeof v === "number" && Number.isFinite(v)) w.value = v;
+    // TED occasionally returns -1 as a "value not disclosed" sentinel.
+    // Treat any non-positive amount as missing rather than a real bid.
+    if (typeof v === "number" && Number.isFinite(v) && v > 0) w.value = v;
     return w;
   });
 
@@ -221,7 +223,10 @@ function extractAward(
   const totalCur =
     totalCurArr[0] ?? arrayOf(p["tender-value-cur"])[0];
 
-  if (winners.length === 0 && (totalRaw === undefined || !Number.isFinite(totalRaw))) {
+  const totalIsRealNumber =
+    typeof totalRaw === "number" && Number.isFinite(totalRaw) && totalRaw > 0;
+
+  if (winners.length === 0 && !totalIsRealNumber) {
     return undefined;
   }
 
@@ -229,7 +234,7 @@ function extractAward(
     winners,
     awardedAt,
   };
-  if (typeof totalRaw === "number" && Number.isFinite(totalRaw)) {
+  if (totalIsRealNumber) {
     award.totalValue = totalRaw;
   }
   if (typeof totalCur === "string" && totalCur.length === 3) {

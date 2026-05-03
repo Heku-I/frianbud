@@ -166,6 +166,25 @@ describe("DoffinClient.search query forwarding and post-filtering", () => {
     expect(results[0]?.id).toBe("doffin:doffin-cleaning");
   });
 
+  it("biases searchString to 'tildelt' when status=awarded and no query", async () => {
+    const fetch = mockOk({ hits: [], numHitsTotal: 0, numHitsAccessible: 0 });
+    const client = createDoffinClient({ fetch });
+    await client.search({ status: "awarded", enrichCpvs: false });
+    const callArg = fetch.mock.calls[0]![1] as { body: string };
+    const sentBody = JSON.parse(callArg.body);
+    expect(sentBody.searchString).toBe("tildelt");
+    expect(sentBody.size).toBeGreaterThanOrEqual(200);
+  });
+
+  it("respects explicit query over the awarded hint", async () => {
+    const fetch = mockOk({ hits: [], numHitsTotal: 0, numHitsAccessible: 0 });
+    const client = createDoffinClient({ fetch });
+    await client.search({ status: "awarded", query: "renhold", enrichCpvs: false });
+    const callArg = fetch.mock.calls[0]![1] as { body: string };
+    const sentBody = JSON.parse(callArg.body);
+    expect(sentBody.searchString).toBe("renhold");
+  });
+
   it("post-filters hits by regions", async () => {
     const oslo = { ...sampleHit, id: "oslo-tender" };
     const bergen = { ...sampleHit, id: "bergen-tender", locationId: ["NO0A1"] };
