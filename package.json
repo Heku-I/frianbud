@@ -1,14 +1,23 @@
 {
   "name": "frianbud",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MCP server for Norwegian public procurement (TED + Doffin)",
   "license": "MIT",
   "type": "module",
-  "engines": { "node": ">=20" },
-  "bin": { "frianbud": "dist/index.js" },
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "frianbud": "dist/index.js"
+  },
   "main": "./dist/index.js",
   "exports": "./dist/index.js",
-  "files": ["dist", "data", "README.md", "LICENSE"],
+  "files": [
+    "dist",
+    "data",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
